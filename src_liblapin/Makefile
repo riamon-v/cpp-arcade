@@ -5,7 +5,7 @@
 ## Login   <riamon_v@epitech.net>
 ## 
 ## Started on  Thu Apr  6 18:10:28 2017 Riamon Vincent
-## Last update Fri Apr  7 09:15:05 2017 Riamon Vincent
+## Last update Fri Apr  7 16:17:55 2017 Riamon Vincent
 ##
 
 NAME:=		../lib/lib_arcade_lapin.so
@@ -16,7 +16,7 @@ INCLUDE:=	\
 SRC:=		main.cpp \
 
 CXX:=		g++
-CXXFLAGS:=	-W -Wall -Wextra -fpic -pthread -g -std=c++14
+CXXFLAGS:=	-W -Wall -Wextra -fpic -g -std=c++14
 LDFLAGS:=	-shared
 SRC:=		$(addprefix $(SRCDIR), $(SRC))
 OBJ:=		$(SRC:.cpp=.o)

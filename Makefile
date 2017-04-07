@@ -1,11 +1,11 @@
 ##
-## Makefile :D
-##
-## Made by David Zeng
-## Login   <zeng_d@epitech.net>
-##
-## Started on  Mon Oct 12 13:31:18 2015 David Zeng
-## Last update Fri Apr  7 10:52:28 2017 Riamon Vincent
+## Makefile<cpp_arcade> for Makefile in /home/riamon_v/rendu/CPP/cpp_arcade/src_liblapin
+## 
+## Made by Riamon Vincent
+## Login   <riamon_v@epitech.net>
+## 
+## Started on  Fri Apr  7 16:19:03 2017 Riamon Vincent
+## Last update Fri Apr  7 16:19:04 2017 Riamon Vincent
 ##
 
 NAME:=		arcade
