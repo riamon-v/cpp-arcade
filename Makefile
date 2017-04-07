@@ -5,7 +5,7 @@
 ## Login   <zeng_d@epitech.net>
 ##
 ## Started on  Mon Oct 12 13:31:18 2015 David Zeng
-## Last update Thu Apr  6 19:00:33 2017 Riamon Vincent
+## Last update Fri Apr  7 10:52:28 2017 Riamon Vincent
 ##
 
 NAME:=		arcade
@@ -15,7 +15,7 @@ INCLUDE:=	include/ \
 SRC:=		main.cpp \
 
 CXX:=		g++
-CXXFLAGS:=	-W -Wall -Wextra -g -std=c++14
+CXXFLAGS:=	-W -Wall -Wextra -g -std=c++14 -ldl
 SRC:=		$(addprefix $(SRCDIR), $(SRC))
 OBJ:=		$(SRC:.cpp=.o)
 RM:=		rm -f

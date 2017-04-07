@@ -5,10 +5,12 @@
 // Login   <riamon_v@epitech.net>
 // 
 // Started on  Thu Apr  6 18:54:40 2017 Riamon Vincent
-// Last update Thu Apr  6 18:54:47 2017 Riamon Vincent
+// Last update Fri Apr  7 10:54:25 2017 Riamon Vincent
 //
 
-int		main()
+#include <unistd.h>
+
+void		test()
 {
-  return (0);
+  write(1, "sfml\n", 5);
 }

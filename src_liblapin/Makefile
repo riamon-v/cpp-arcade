@@ -5,10 +5,10 @@
 ## Login   <riamon_v@epitech.net>
 ## 
 ## Started on  Thu Apr  6 18:10:28 2017 Riamon Vincent
-## Last update Thu Apr  6 18:55:01 2017 Riamon Vincent
+## Last update Fri Apr  7 09:15:05 2017 Riamon Vincent
 ##
 
-NAME:=		../lib/lib_arcade_liblapin.so
+NAME:=		../lib/lib_arcade_lapin.so
 SRCDIR:=	src/
 
 INCLUDE:=	\
