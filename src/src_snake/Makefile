@@ -5,10 +5,10 @@
 ## Login   <riamon_v@epitech.net>
 ## 
 ## Started on  Thu Apr  6 18:10:28 2017 Riamon Vincent
-## Last update Fri Apr  7 16:18:31 2017 Riamon Vincent
+## Last update Fri Apr  7 16:30:33 2017 Riamon Vincent
 ##
 
-NAME:=		../lib/lib_arcade_ncurses.so
+NAME:=		../../games/lib_arcade_snake.so
 SRCDIR:=	src/
 
 INCLUDE:=	\

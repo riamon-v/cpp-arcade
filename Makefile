@@ -5,7 +5,7 @@
 ## Login   <riamon_v@epitech.net>
 ## 
 ## Started on  Fri Apr  7 16:19:03 2017 Riamon Vincent
-## Last update Fri Apr  7 16:19:04 2017 Riamon Vincent
+## Last update Fri Apr  7 16:32:05 2017 Riamon Vincent
 ##
 
 NAME:=		arcade
@@ -28,25 +28,31 @@ CYAN:=		"\033[0;36;1m"
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	make -C ./src_liblapin/
-	make -C ./src_ncurses/
-	make -C ./src_sfml/
+	make -C ./src/src_liblapin/
+	make -C ./src/src_ncurses/
+	make -C ./src/src_sfml/
+	make -C ./src/src_snake/
+	make -C ./src/src_pacman/
 	$(CXX) -o $(NAME) $(OBJ) $(CXXFLAGS) $(LDFLAGS) && \
 		echo -e $(GREEN)"[BIN]"$(CYAN) $(NAME)$(DEFAULT) || \
 		echo -e $(RED)"[XX]"$(DEFAULT) $(NAME)
 	for file in $(SRC); do fgrep -niH -e TODO -e FIXME $$file --color=auto; done; true
 
 clean:
-	make clean -C ./src_liblapin/
-	make clean -C ./src_ncurses/
-	make clean -C ./src_sfml/
+	make clean -C ./src/src_liblapin/
+	make clean -C ./src/src_ncurses/
+	make clean -C ./src/src_sfml/
+	make clean -C ./src/src_snake/
+	make clean -C ./src/src_pacman/
 	echo -e $(CYAN)"Cleaning $(NAME) tmp files..." $(DEFAULT)
 	$(RM) $(OBJ)
 
 fclean:	clean
-	make fclean -C ./src_liblapin/
-	make fclean -C ./src_ncurses/
-	make fclean -C ./src_sfml/
+	make fclean -C ./src/src_liblapin/
+	make fclean -C ./src/src_ncurses/
+	make fclean -C ./src/src_sfml/
+	make fclean -C ./src/src_snake/
+	make fclean -C ./src/src_pacman/
 	echo -e $(CYAN)"Cleaning $(NAME) executable..." $(DEFAULT)
 	$(RM) $(NAME)
 
