@@ -1,19 +1,21 @@
 ##
 ## Makefile for Makfile in /home/riamon_v/rendu/CPP/cpp_arcade/src_liblapin
-## 
+##
 ## Made by Riamon Vincent
 ## Login   <riamon_v@epitech.net>
-## 
+##
 ## Started on  Thu Apr  6 18:10:28 2017 Riamon Vincent
-## Last update Fri Apr  7 16:30:33 2017 Riamon Vincent
+## Last update Tue Apr 11 00:06:38 2017 Melvin Personnier
 ##
 
 NAME:=		../../games/lib_arcade_snake.so
 SRCDIR:=	src/
 
-INCLUDE:=	\
+INCLUDE:=	../../include
 
 SRC:=		main.cpp \
+				Snake.cpp \
+				Map.cpp
 
 CXX:=		g++
 CXXFLAGS:=	-W -Wall -Wextra -fpic -g -std=c++14
