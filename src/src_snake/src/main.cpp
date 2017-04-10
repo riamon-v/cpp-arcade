@@ -5,7 +5,7 @@
 // Login   <riamon_v@epitech.net>
 //
 // Started on  Fri Apr  7 16:29:42 2017 Riamon Vincent
-// Last update Tue Apr 11 00:38:26 2017 Melvin Personnier
+// Last update Tue Apr 11 01:09:56 2017 Melvin Personnier
 //
 
 #include "Snake.hpp"
@@ -53,27 +53,28 @@ void MapToGetMap(arcade::CommandType cmd, Snake *snake)
 
 extern "C"  void		Play(void)
 {
-  arcade::CommandType cmd;
+  arcade::CommandType command;
   Snake *snake;
   snake = new Snake(30, 30);
 
-  while (read(0, &cmd, sizeof(arcade::CommandType)))
+  while (std::cin)
   {
-    if (cmd == arcade::CommandType::WHERE_AM_I)
+    std::cin.read(reinterpret_cast<char *>(&command), sizeof(arcade::CommandType));
+    if (command == arcade::CommandType::WHERE_AM_I)
       std::cout << "where" << std::endl;
-    else if (cmd == arcade::CommandType::GET_MAP)
-      MapToGetMap(cmd, snake);
-    else if (cmd == arcade::CommandType::GO_UP)
+    else if (command == arcade::CommandType::GET_MAP)
+      MapToGetMap(command, snake);
+    else if (command == arcade::CommandType::GO_UP)
       std::cout << "up" << std::endl;
-    else if (cmd == arcade::CommandType::GO_DOWN)
+    else if (command == arcade::CommandType::GO_DOWN)
       std::cout << "down" << std::endl;
-    else if (cmd == arcade::CommandType::GO_LEFT)
+    else if (command == arcade::CommandType::GO_LEFT)
       std::cout << "left" << std::endl;
-    else if (cmd == arcade::CommandType::GO_RIGHT)
+    else if (command == arcade::CommandType::GO_RIGHT)
       std::cout << "right" << std::endl;
-    else if (cmd == arcade::CommandType::GO_FORWARD)
+    else if (command == arcade::CommandType::GO_FORWARD)
       std::cout << "forward" << std::endl;
-    else if (cmd == arcade::CommandType::PLAY)
+    else if (command == arcade::CommandType::PLAY)
       std::cout << "play" << std::endl;
     }
 }
