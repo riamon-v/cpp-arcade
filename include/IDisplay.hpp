@@ -5,13 +5,18 @@
 // Login   <riamon_v@epitech.net>
 // 
 // Started on  Mon Apr 10 21:05:22 2017 Riamon Vincent
-// Last update Mon Apr 10 22:23:38 2017 Riamon Vincent
+// Last update Tue Apr 11 17:43:57 2017 Riamon Vincent
 //
 
 #ifndef __IDISPLAY_HPP__
 # define __IDISPLAY_HPP__
 
 #include <iostream>
+
+#define WIN_H 500
+#define WIN_W 500
+#define MAP_H 50
+#define MAP_W 50
 
 enum Input {
   UNDEFINED = 0,

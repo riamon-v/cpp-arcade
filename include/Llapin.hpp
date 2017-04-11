@@ -5,7 +5,7 @@
 // Login   <riamon_v@epitech.net>
 // 
 // Started on  Mon Apr 10 18:55:43 2017 Riamon Vincent
-// Last update Tue Apr 11 13:43:39 2017 Riamon Vincent
+// Last update Tue Apr 11 17:40:53 2017 Riamon Vincent
 //
 
 #ifndef LLAPIN_HPP_
@@ -29,10 +29,15 @@ public:
   Input getInputs() const;
   void kill();
 
+public:
   static t_bunny_response pseudo_events(t_bunny_event_state st, t_bunny_keysym key,
   				 void *ptr);
-
   static t_bunny_response pseudo_loop(void *ptr);
+
+public:
+  void tekpixel(t_bunny_position *pos, unsigned int col);
+  void color_full(unsigned int col);
+  void draw_case(t_bunny_position *pos, t_color *col);
 
 private:
   t_bunny_window *_win;
