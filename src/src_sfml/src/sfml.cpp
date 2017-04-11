@@ -1,9 +1,9 @@
 //
 // sfml.cpp for sfml in /home/riamon_v/rendu/CPP/cpp_arcade/src/src_liblapin/src
-// 
+//
 // Made by Riamon Vincent
 // Login   <riamon_v@epitech.net>
-// 
+//
 // Started on  Mon Apr 10 21:02:03 2017 Riamon Vincent
 // Last update Mon Apr 10 22:25:32 2017 Riamon Vincent
 //
@@ -12,17 +12,33 @@
 
 Sfml::Sfml()
 {
-  std::cout << "Sfml" << std::endl;
+  _window = new sf::Window(sf::VideoMode(800, 600), "ARCADE");
+
+  _inputs[sf::Keyboard::Num2] = PREV_LIB;
+  _inputs[sf::Keyboard::Num3] = NEXT_LIB;
+  _inputs[sf::Keyboard::Num4] = PREV_GAME;
+  _inputs[sf::Keyboard::Num5] = PREV_GAME;
+  _inputs[sf::Keyboard::Num8] = RESTART;
+  _inputs[sf::Keyboard::Num9] = MENU;
+  _inputs[sf::Keyboard::Escape] = EXIT;
+  _inputs[sf::Keyboard::Right] = RIGHT;
+  _inputs[sf::Keyboard::Left] = LEFT;
+  _inputs[sf::Keyboard::Up] = UP;
+  _inputs[sf::Keyboard::Down] = DOWN;
+  _inputs[sf::Keyboard::Return] = PLAY;
+
 }
 
 Sfml::~Sfml()
 {
+  kill();
+  delete _window;
 }
 
 int Sfml::configure(unsigned int width, unsigned int height)
 {
-  (void)width;
-  (void)height;
+  if (_window->isOpen())
+    _window->setSize(sf::Vector2u(width, height));
   return (0);
 }
 
@@ -39,10 +55,29 @@ void Sfml::displayMenu(void *data) const
 
 Input Sfml::getInputs() const
 {
+  sf::Event event;
+
+  if (_window->pollEvent(event))
+  {
+    std::cout << "lol" << '\n';
+      if (event.type == sf::Event::KeyPressed)
+      {
+        std::cout << "mdr" << '\n';
+        try {
+          _inputs.at(event.key.code);
+          return (_inputs.at(event.key.code));
+        } catch (std::exception &e) {
+          return (Input::UNDEFINED);
+        }
+      }
+  }
+  return (Input::UNDEFINED);
 }
 
 void Sfml::kill()
 {
+  if (_window->isOpen())
+    _window->close();
 }
 
 IDisplay *cln::clone()
