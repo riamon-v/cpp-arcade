@@ -5,16 +5,11 @@
 // Login   <riamon_v@epitech.net>
 //
 // Started on  Thu Apr  6 18:56:31 2017 Riamon Vincent
-// Last update Tue Apr 11 10:07:08 2017 Riamon Vincent
+// Last update Tue Apr 11 13:31:51 2017 Riamon Vincent
 //
 
 #include <dlfcn.h>
 #include "IDisplay.hpp"
-
-void		loop_main()
-{
-  
-}
 
 int		main(int argc, char **argv)
 {
@@ -33,7 +28,10 @@ int		main(int argc, char **argv)
   handle = dlopen(argv[1], RTLD_LAZY);
 // <<<<<<< HEAD
   if (!handle)
-    ret = 84;
+    {
+      std::cerr << "Dlopen fail " << dlerror() << std::endl;
+      ret = 84;
+    }
   clone = (func)dlsym(handle, "clone");
 // =======
 //   zbeub = (type)dlsym(handle, "Play");
@@ -44,7 +42,10 @@ int		main(int argc, char **argv)
       ret = 84;
     }
   else
-    lib = clone();
+    {
+      lib = clone();
+      lib->getInputs();
+    }
   if (handle)
     dlclose(handle);
   return (ret);
