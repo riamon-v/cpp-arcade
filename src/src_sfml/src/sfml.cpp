@@ -5,7 +5,7 @@
 // Login   <riamon_v@epitech.net>
 // 
 // Started on  Mon Apr 10 21:02:03 2017 Riamon Vincent
-// Last update Mon Apr 10 22:25:32 2017 Riamon Vincent
+// Last update Tue Apr 11 21:07:35 2017 Riamon Vincent
 //
 
 #include "Sfml.hpp"
@@ -39,6 +39,7 @@ void Sfml::displayMenu(void *data) const
 
 Input Sfml::getInputs() const
 {
+  std::cout << "Input" << std::endl;
 }
 
 void Sfml::kill()
