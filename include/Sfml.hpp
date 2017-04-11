@@ -5,7 +5,7 @@
 // Login   <riamon_v@epitech.net>
 // 
 // Started on  Mon Apr 10 20:56:56 2017 Riamon Vincent
-// Last update Mon Apr 10 22:24:50 2017 Riamon Vincent
+// Last update Tue Apr 11 19:16:22 2017 Riamon Vincent
 //
 
 #ifndef SFML_HPP_
@@ -17,7 +17,7 @@ class Sfml : public IDisplay
 {
 public:
   Sfml();
-  ~Sfml();
+  virtual ~Sfml();
   int configure(unsigned int width, unsigned int height);
   void display(void *data) const;
   void displayMenu(void *data) const;

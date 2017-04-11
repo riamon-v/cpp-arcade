@@ -5,7 +5,7 @@
 // Login   <riamon_v@epitech.net>
 // 
 // Started on  Mon Apr 10 18:55:43 2017 Riamon Vincent
-// Last update Tue Apr 11 17:40:53 2017 Riamon Vincent
+// Last update Tue Apr 11 19:15:53 2017 Riamon Vincent
 //
 
 #ifndef LLAPIN_HPP_
@@ -22,7 +22,7 @@ class Lapin : public IDisplay
 {
 public:
   Lapin();
-  ~Lapin();
+  virtual ~Lapin();
   int configure(unsigned int width, unsigned int height);
   void display(void *data) const;
   void displayMenu(void *data) const;

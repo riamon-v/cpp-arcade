@@ -5,7 +5,7 @@
 // Login   <riamon_v@epitech.net>
 // 
 // Started on  Mon Apr 10 20:52:22 2017 Riamon Vincent
-// Last update Tue Apr 11 18:19:50 2017 Riamon Vincent
+// Last update Tue Apr 11 21:38:24 2017 Riamon Vincent
 //
 
 #include "Llapin.hpp"
@@ -31,6 +31,7 @@ Lapin::Lapin()
 
 Lapin::~Lapin()
 {
+  kill();
 }
 
 int Lapin::configure(unsigned int width, unsigned int height)
@@ -60,8 +61,6 @@ t_bunny_response Lapin::pseudo_events(t_bunny_event_state st,
     _in = _inputs[key];
   else
     _in = UNDEFINED;
-  // if (st == GO_DOWN)
-  //   std::cout << _in << std::endl;
   return (GO_ON);
 }
 

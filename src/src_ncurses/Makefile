@@ -5,7 +5,7 @@
 ## Login   <riamon_v@epitech.net>
 ## 
 ## Started on  Thu Apr  6 18:10:28 2017 Riamon Vincent
-## Last update Mon Apr 10 21:49:43 2017 Riamon Vincent
+## Last update Tue Apr 11 19:01:14 2017 Riamon Vincent
 ##
 
 NAME:=		../../lib/lib_arcade_ncurses.so
@@ -16,7 +16,9 @@ INCLUDE:=	../../include/\
 SRC:=		ncurses.cpp \
 
 CXX:=		g++
-CXXFLAGS:=	-W -Wall -Wextra -fpic -g -std=c++14
+CXXFLAGS:=	-W -Wall -Wextra -fpic -g -std=c++14 \
+		-lncurses \
+
 LDFLAGS:=	-shared
 SRC:=		$(addprefix $(SRCDIR), $(SRC))
 OBJ:=		$(SRC:.cpp=.o)

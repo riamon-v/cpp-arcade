@@ -5,9 +5,10 @@
 // Login   <riamon_v@epitech.net>
 //
 // Started on  Thu Apr  6 18:56:31 2017 Riamon Vincent
-// Last update Tue Apr 11 17:10:50 2017 Riamon Vincent
+// Last update Tue Apr 11 21:37:04 2017 Riamon Vincent
 //
 
+#include <unistd.h>
 #include "IDisplay.hpp"
 #include "LibManager.hpp"
 
@@ -44,6 +45,7 @@ int		main(int argc, char **argv)
     return ((std::cerr<< Lman->Error() << std::endl) && 1);
   lib = clone();
   lib->getInputs();
+  delete lib;
   delete Lman;
   return (0);
 }
