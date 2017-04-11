@@ -1,14 +1,21 @@
-// Kind of Advanced Language Assistant Laboratory 2006-2042
-// Epitech 1999-2042
-// Jason Brillante brilla_a brilla_b
-// Have you played Atari today?
 //
-// WELCOME TO THE ARCADE
-// ENJOY OR DIE
+// Protocol.hpp for  in /Users/person-m/Epitech/TEK2/C++/cpp_arcade/include/
+//
+// Made by Melvin Personnier
+// Login   <person_m@epitech.eu>
+//
+// Started on  Mon Apr 10 21:47:21 2017 Melvin Personnier
+// Last update Mon Apr 10 21:48:37 2017 Melvin Personnier
+//
 
 #ifndef			__ARCADE_PROTOCOL_HPP__
 # define		__ARCADE_PROTOCOL_HPP__
 # include		<stdint.h>
+# include   <cstdlib>
+# include   <iostream>
+# include   <ctime>
+# include   <string>
+# include   <unistd.h>
 
 namespace		arcade
 {
@@ -59,4 +66,3 @@ namespace		arcade
 }
 
 #endif	//		__ARCADE_PROTOCOL_HPP__
-
