@@ -5,7 +5,7 @@
 // Login   <riamon_v@epitech.net>
 // 
 // Started on  Mon Apr 10 21:05:22 2017 Riamon Vincent
-// Last update Tue Apr 11 17:43:57 2017 Riamon Vincent
+// Last update Tue Apr 11 17:58:27 2017 Riamon Vincent
 //
 
 #ifndef __IDISPLAY_HPP__
@@ -13,8 +13,8 @@
 
 #include <iostream>
 
-#define WIN_H 500
-#define WIN_W 500
+#define WIN_H 1000
+#define WIN_W 1000
 #define MAP_H 50
 #define MAP_W 50
 

@@ -5,7 +5,7 @@
 // Login   <riamon_v@epitech.net>
 // 
 // Started on  Mon Apr 10 20:52:22 2017 Riamon Vincent
-// Last update Tue Apr 11 17:44:22 2017 Riamon Vincent
+// Last update Tue Apr 11 18:19:50 2017 Riamon Vincent
 //
 
 #include "Llapin.hpp"
@@ -26,7 +26,7 @@ Lapin::Lapin()
   _inputs[BKS_RETURN] = PLAY;
   _in = UNDEFINED;
   std::cout << "Lapin" << std::endl;
-  configure(500, 500);
+  configure(WIN_W, WIN_H);
 }
 
 Lapin::~Lapin()
