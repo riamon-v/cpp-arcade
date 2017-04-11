@@ -5,28 +5,43 @@
 // Login   <riamon_v@epitech.net>
 // 
 // Started on  Thu Apr  6 18:56:31 2017 Riamon Vincent
-// Last update Fri Apr  7 14:25:27 2017 Riamon Vincent
+// Last update Mon Apr 10 23:56:39 2017 Riamon Vincent
 //
 
-#include <iostream>
 #include <dlfcn.h>
+#include "IDisplay.hpp"
 
-typedef void	(*type)();
+void		loop_main()
+{
+  
+}
 
 int		main(int argc, char **argv)
 {
+  IDisplay	*lib;
+  int		ret;
   void		*handle;
-  type		zbeub;
+  func		clone;
   char		*dl_error;
 
+  ret = 0;
   if (argc != 2)
-    return (1);
+    {
+      std::cerr << argv[0] << " [LIBRARY NAME]" << std::endl;
+      return (84);
+    }
   handle = dlopen(argv[1], RTLD_LAZY);
-  zbeub = (type)dlsym(handle, "test");
+  if (!handle)
+    ret = 84;
+  clone = (func)dlsym(handle, "clone");
   if ((dl_error = dlerror()))
-    std::cerr << "Cannot load symbol 'test': " << dl_error << std::endl;
+    {
+      std::cerr << "Cannot load symbol 'clone': " << dl_error << std::endl;
+      ret = 84;
+    }
   else
-    zbeub();
-  dlclose(handle);
-  return (0);
+    lib = clone();
+  if (handle)
+    dlclose(handle);
+  return (ret);
 }
