@@ -12,7 +12,7 @@
 
 Sfml::Sfml()
 {
-  _window = new sf::Window(sf::VideoMode(WIN_W, WIN_H), "Arcade");
+  _window = new sf::RenderWindow(sf::VideoMode(WIN_W, WIN_H), "Arcade");
 
   _inputs[sf::Keyboard::Num2] = PREV_LIB;
   _inputs[sf::Keyboard::Num3] = NEXT_LIB;
@@ -33,6 +33,15 @@ Sfml::~Sfml()
 {
   kill();
   delete _window;
+}
+
+void Sfml::draw_case(const unsigned int x, const unsigned int y,
+                    const sf::Color &color)
+{
+  sf::RectangleShape rectangle(sf::Vector2f((WIN_W / MAP_W), (WIN_H / MAP_H)));
+  rectangle.setPosition(sf::Vector2f(x, y));
+  rectangle.setFillColor(color);
+  _window->draw(rectangle);
 }
 
 int Sfml::configure(unsigned int width, unsigned int height)

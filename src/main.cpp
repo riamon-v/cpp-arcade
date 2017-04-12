@@ -45,6 +45,7 @@ int		main(int argc, char **argv)
     return ((std::cerr<< Lman->Error() << std::endl) && 1);
   lib = clone();
   lib->getInputs();
+  sleep(1);
   delete lib;
   delete Lman;
   return (0);

@@ -25,8 +25,9 @@ public:
   void displayMenu(void *data) const;
   Input getInputs() const;
   void kill();
+  void draw_case(const unsigned int , const unsigned int , const sf::Color &);
 private:
-  sf::Window *_window;
+  sf::RenderWindow *_window;
   std::map<sf::Keyboard::Key, Input> _inputs;
 };
 
