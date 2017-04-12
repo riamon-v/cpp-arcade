@@ -19,6 +19,7 @@ class LibManager
 public:
   LibManager(std::string);
   ~LibManager();
+  void Switch(std::string);
   std::string getLib() const;
   void *getHandle() const;
   char *Error() const;

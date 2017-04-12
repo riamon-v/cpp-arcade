@@ -14,6 +14,7 @@ INCLUDE:=	include/ \
 
 SRC:=		main.cpp \
 		LibManager.cpp \
+		InputManager.cpp \
 
 CXX:=		g++
 CXXFLAGS:=	-W -Wall -Wextra -g -std=c++14 -ldl
