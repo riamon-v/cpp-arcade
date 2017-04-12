@@ -5,10 +5,9 @@
 // Login   <riamon_v@epitech.net>
 //
 // Started on  Fri Apr  7 16:29:42 2017 Riamon Vincent
-// Last update Wed Apr 12 16:26:03 2017 Melvin Personnier
+// Last update Wed Apr 12 16:53:00 2017 Melvin Personnier
 //
 
-#include "SnakeGame.hpp"
 #include "Snake.hpp"
 #include "Protocol.hpp"
 
