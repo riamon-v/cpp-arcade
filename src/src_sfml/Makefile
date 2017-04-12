@@ -1,23 +1,28 @@
 ##
 ## Makefile for Makfile in /home/riamon_v/rendu/CPP/cpp_arcade/src_liblapin
-## 
+##
 ## Made by Riamon Vincent
 ## Login   <riamon_v@epitech.net>
-## 
+##
 ## Started on  Thu Apr  6 18:10:28 2017 Riamon Vincent
-## Last update Fri Apr  7 16:28:20 2017 Riamon Vincent
+## Last update Mon Apr 10 21:49:00 2017 Riamon Vincent
 ##
 
 NAME:=		../../lib/lib_arcade_sfml.so
 SRCDIR:=	src/
 
-INCLUDE:=	\
+INCLUDE:=	../../include\
 
-SRC:=		main.cpp \
+SRC:=		sfml.cpp \
 
 CXX:=		g++
-CXXFLAGS:=	-W -Wall -Wextra -fpic -g -std=c++14
+CXXFLAGS:=	-W -Wall -Wextra -fpic -g -std=c++14 -lsfml-audio \
+						-lsfml-graphics -ldl \
+						-lsfml-window \
+						-lsfml-system
+
 LDFLAGS:=	-shared
+
 SRC:=		$(addprefix $(SRCDIR), $(SRC))
 OBJ:=		$(SRC:.cpp=.o)
 RM:=		rm -f

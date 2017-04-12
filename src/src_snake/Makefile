@@ -5,13 +5,13 @@
 ## Login   <riamon_v@epitech.net>
 ##
 ## Started on  Thu Apr  6 18:10:28 2017 Riamon Vincent
-## Last update Tue Apr 11 21:28:34 2017 Melvin Personnier
+## Last update Wed Apr 12 16:50:42 2017 Melvin Personnier
 ##
 
 NAME:=		../../games/lib_arcade_snake.so
 SRCDIR:=	src/
 
-INCLUDE:=	../../include
+INCLUDE:=	../../include \
 
 SRC:=		main.cpp \
 				SnakeGame.cpp \
@@ -20,7 +20,8 @@ SRC:=		main.cpp \
 				Errors.cpp
 
 CXX:=		g++
-CXXFLAGS:=	-W -Wall -Wextra -fpic -g -std=c++14
+CXXFLAGS:=	-W -Wall -Wextra -fpic -g -std=c++14 \
+
 LDFLAGS:=	-shared
 SRC:=		$(addprefix $(SRCDIR), $(SRC))
 OBJ:=		$(SRC:.cpp=.o)

@@ -5,18 +5,26 @@
 ## Login   <riamon_v@epitech.net>
 ## 
 ## Started on  Thu Apr  6 18:10:28 2017 Riamon Vincent
-## Last update Fri Apr  7 16:28:03 2017 Riamon Vincent
+## Last update Tue Apr 11 13:24:51 2017 Riamon Vincent
 ##
 
 NAME:=		../../lib/lib_arcade_lapin.so
 SRCDIR:=	src/
 
-INCLUDE:=	\
+INCLUDE:=	../../include \
+		/home/${USER}/.froot/include/ \
 
-SRC:=		main.cpp \
+SRC:=		lapin.cpp \
 
 CXX:=		g++
-CXXFLAGS:=	-W -Wall -Wextra -fpic -g -std=c++14
+CXXFLAGS:=	-W -Wall -Wextra -fpic -g -std=c++14 \
+		-L/home/${USER}/.froot/lib/ -llapin \
+		-lsfml-audio \
+		-lsfml-graphics -ldl \
+		-lsfml-window \
+		-lsfml-system \
+		-lstdc++ -lm \
+
 LDFLAGS:=	-shared
 SRC:=		$(addprefix $(SRCDIR), $(SRC))
 OBJ:=		$(SRC:.cpp=.o)

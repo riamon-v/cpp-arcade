@@ -5,7 +5,7 @@
 // Login   <person_m@epitech.eu>
 //
 // Started on  Mon Apr 10 21:47:21 2017 Melvin Personnier
-// Last update Mon Apr 10 21:48:37 2017 Melvin Personnier
+// Last update Tue Apr 11 21:29:46 2017 Melvin Personnier
 //
 
 #ifndef			__ARCADE_PROTOCOL_HPP__
@@ -16,6 +16,8 @@
 # include   <ctime>
 # include   <string>
 # include   <unistd.h>
+# include   "Map.hpp"
+# include   "Errors.hpp"
 
 namespace		arcade
 {

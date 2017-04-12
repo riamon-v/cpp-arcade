@@ -5,28 +5,50 @@
 // Login   <riamon_v@epitech.net>
 //
 // Started on  Thu Apr  6 18:56:31 2017 Riamon Vincent
-// Last update Sun Apr  9 16:51:57 2017 Melvin Personnier
+// Last update Tue Apr 11 21:53:34 2017 Riamon Vincent
 //
 
-#include <iostream>
-#include <dlfcn.h>
+#include <unistd.h>
+#include "IDisplay.hpp"
+#include "LibManager.hpp"
+#include "InputManager.hpp"
 
-typedef void	(*type)();
+void		main_loop(IDisplay *lib, LibManager *lman)
+{
+  InputManager Iman(lman, lib);
+  int		is_running;
+
+  is_running = 1;
+  while (is_running)
+    {
+      Iman.do_action(is_running, Iman._lib->getInputs());
+      //Input gestion
+      //Game logic
+      //Display
+    }
+}
 
 int		main(int argc, char **argv)
 {
-  void		*handle;
-  type		zbeub;
-  char		*dl_error;
+  IDisplay	*lib;
+  LibManager	*Lman;
+  func		clone;
 
   if (argc != 2)
-    return (1);
-  handle = dlopen(argv[1], RTLD_LAZY);
-  zbeub = (type)dlsym(handle, "Play");
-  if ((dl_error = dlerror()))
-    std::cerr << "Cannot load symbol 'test': " << dl_error << std::endl;
-  else
-    zbeub();
-  dlclose(handle);
+    {
+      std::cerr << argv[0] << " [LIBRARY NAME]" << std::endl;
+      return (84);
+    }
+  Lman = new LibManager(argv[1]);
+  if (Lman->Error())
+    return ((std::cerr << Lman->Error() << std::endl) && 1);
+  clone = (func)dlsym(Lman->getHandle(), "clone");
+  Lman->setError(dlerror());
+  if (Lman->Error())
+    return ((std::cerr<< Lman->Error() << std::endl) && 1);
+  lib = clone();
+  main_loop(lib, Lman);
+  delete lib;
+  delete Lman;
   return (0);
 }

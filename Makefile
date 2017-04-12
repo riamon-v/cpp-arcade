@@ -5,7 +5,7 @@
 ## Login   <riamon_v@epitech.net>
 ## 
 ## Started on  Fri Apr  7 16:19:03 2017 Riamon Vincent
-## Last update Fri Apr  7 16:32:05 2017 Riamon Vincent
+## Last update Tue Apr 11 16:46:48 2017 Riamon Vincent
 ##
 
 NAME:=		arcade
@@ -13,6 +13,8 @@ SRCDIR:=	src/
 INCLUDE:=	include/ \
 
 SRC:=		main.cpp \
+		LibManager.cpp \
+		InputManager.cpp \
 
 CXX:=		g++
 CXXFLAGS:=	-W -Wall -Wextra -g -std=c++14 -ldl
