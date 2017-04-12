@@ -5,20 +5,20 @@
 // Login   <riamon_v@epitech.net>
 //
 // Started on  Fri Apr  7 16:29:42 2017 Riamon Vincent
-// Last update Wed Apr 12 16:53:00 2017 Melvin Personnier
+// Last update Wed Apr 12 18:16:24 2017 Melvin Personnier
 //
 
 #include "Snake.hpp"
 #include "Protocol.hpp"
 
-void getWhereAmI(arcade::CommandType command, Snake *snake)
+void Snake::getWhereAmI(arcade::CommandType command, Snake *snake)
 {
   snake->getWhereAmI()->type = command;
   std::cout.write(reinterpret_cast<char *>(snake->getWhereAmI()), sizeof(struct arcade::WhereAmI) +
     sizeof(arcade::Position) * snake->getWhereAmI()->lenght);
 }
 
-void getMapToGetMap(arcade::CommandType command, Snake *snake)
+void Snake::getMapToGetMap(arcade::CommandType command, Snake *snake)
 {
   int sizeOfStruct = sizeof(struct arcade::GetMap) +
     sizeof(arcade::TileType) * (snake->getMap()->getWidth() * snake->getMap()->getHeight());
@@ -55,7 +55,6 @@ void getMapToGetMap(arcade::CommandType command, Snake *snake)
       ++height;
     }
   	std::cout.write(reinterpret_cast<char *>(getMap), sizeOfStruct);
-
 }
 
 extern "C"  void		Play(void)
@@ -67,9 +66,9 @@ extern "C"  void		Play(void)
   {
     std::cin.read(reinterpret_cast<char *>(&command), sizeof(arcade::CommandType));
     if (command == arcade::CommandType::WHERE_AM_I)
-      getWhereAmI(command, snake);
+      snake->getWhereAmI(command, snake);
     else if (command == arcade::CommandType::GET_MAP)
-      getMapToGetMap(command, snake);
+      snake->getMapToGetMap(command, snake);
     else if (command == arcade::CommandType::GO_UP)
       snake->setDir(Snake::Direction::UP);
     else if (command == arcade::CommandType::GO_DOWN)

@@ -5,7 +5,7 @@
 // Login   <person_m@epitech.eu>
 //
 // Started on  Tue Apr 11 15:03:32 2017 Melvin Personnier
-// Last update Wed Apr 12 14:27:30 2017 Melvin Personnier
+// Last update Wed Apr 12 18:00:03 2017 Melvin Personnier
 //
 
 #ifndef __SNAKE_HPP__
@@ -40,6 +40,9 @@ class Snake
     Map *getMap() const;
     arcade::WhereAmI *getWhereAmI() const;
     Direction getDir() const;
+    void getWhereAmI(arcade::CommandType command, Snake *snake);
+    void getMapToGetMap(arcade::CommandType command, Snake *snake);
+
     void setDir(Direction _dir);
     void goUp();
     void goDown();
