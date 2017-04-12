@@ -71,7 +71,7 @@ Input Ncurses::getInputs() const
 
 void Ncurses::kill()
 {
-  std::cerr << "Kill Ncurses" << std::endl;
+  //std::cerr << "Kill Ncurses" << std::endl;
   delwin(_win);
   endwin();
 }

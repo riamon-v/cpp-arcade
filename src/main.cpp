@@ -15,13 +15,11 @@
 
 void		main_loop(IDisplay *lib, LibManager *lman)
 {
-  InputManager Iman(lman, lib);
-  int		is_running;
+  InputManager Iman(lman, lib, 1);
 
-  is_running = 1;
-  while (is_running)
+  while (Iman.is_running)
     {
-      Iman.do_action(is_running, Iman._lib->getInputs());
+      Iman.do_action(Iman._lib->getInputs());
       //Input gestion
       //Game logic
       //Display

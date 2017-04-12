@@ -5,21 +5,24 @@
 #include <sys/types.h>
 #include <dirent.h>
 #include <vector>
+#include <map>
+#include <functional>
+#include <utility>
 #include "IDisplay.hpp"
 #include "LibManager.hpp"
 
 class InputManager
 {
 public:
-  InputManager(LibManager *, IDisplay *);
+  InputManager(LibManager *, IDisplay *, int);
   ~InputManager();
-  void do_action(int &, Input);
+  void do_action(Input);
   std::string name_next_lib(int mode);
   void switch_lib(int mode);
-  void switch_game();
+  void switch_game(int mode);
   void restart();
   void menu();
-  void my_exit(int &);
+  void my_exit();
   void goRight();
   void goLeft();
   void goUp();
@@ -30,6 +33,7 @@ public:
   LibManager *_Lman;
   IDisplay *_lib;
   std::vector<std::string> _libs;
+  int is_running;
 };
 
 #endif //INPUTMANAGER_HPP_
