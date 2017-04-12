@@ -10,7 +10,7 @@
 
 #include "InputManager.hpp"
 
-InputManager::InputManager(LibManager *lman, IDisplay *lib) : _Lman(lman), _lib(lib)
+InputManager::InputManager(LibManager *lman, IDisplay *lib, int run) : _Lman(lman), _lib(lib), is_running(run)
 {
   DIR *dir;
   struct dirent *entry;
@@ -29,16 +29,59 @@ InputManager::~InputManager()
 {
 }
 
-void InputManager::do_action(int &is_running, Input in)
+void InputManager::do_action(Input in)
 {
+  /*  std::map<Input, std::function<void()>> _fun;
+
+      _fun[PREV_LIB] = [this] () {
+      this->switch_lib(0);
+      };
+      _fun[NEXT_LIB] = [this] () {
+      this->switch_lib(1);
+      };
+      _fun[PREV_GAME] = [this] () {
+      this->switch_game(0);
+      };
+      _fun[NEXT_GAME] = [this] () {
+      this->switch_game(1);
+      };
+      _fun[RESTART] = [this] () {
+      this->restart(); //TODO à voir
+      };
+      _fun[MENU] = [this] () {
+      this->menu(); //TODO à voir
+      };
+      _fun[EXIT] = [this] () {
+      this->my_exit();
+      };
+      _fun[RIGHT] = [this] () {
+      this->goRight();
+      };
+      _fun[LEFT] = [this] () {
+      this->goLeft();
+      };
+      _fun[UP] = [this] () {
+      this->goUp();
+      };
+      _fun[DOWN] = [this] () {
+      this->goDown();
+      };
+      _fun[PLAY] = [this] () {
+      this->launch_game(); //TODO à voir
+      };
+
+      try   {
+      _fun[in]();
+      }catch (std::exception const &err) {
+      }*/
   if (in == PREV_LIB)
     switch_lib(0);
   else if (in == NEXT_LIB)
     switch_lib(1);
   else if (in == PREV_GAME)
-    switch_game();
+    switch_game(0);
   else if (in == NEXT_GAME)
-    switch_game();
+    switch_game(1);
   else if (in == RESTART)
     restart();
   else if (in == MENU)
@@ -86,8 +129,9 @@ void InputManager::switch_lib(int mode)
   _lib = clone();
 }
 
-void InputManager::switch_game()
+void InputManager::switch_game(int mode)
 {
+  (void)mode;
   std::cout << "Switch Game" << std::endl;
 }
 
@@ -101,9 +145,9 @@ void InputManager::menu()
   std::cout << "Display Menu" << std::endl;
 }
 
-void InputManager::my_exit(int &is_running)
+void InputManager::my_exit()
 {
-  is_running = 0;
+  InputManager::is_running = 0;
   std::cout << "Exit" << std::endl;
 }
 
