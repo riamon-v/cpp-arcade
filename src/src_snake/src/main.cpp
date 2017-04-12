@@ -5,13 +5,21 @@
 // Login   <riamon_v@epitech.net>
 //
 // Started on  Fri Apr  7 16:29:42 2017 Riamon Vincent
-// Last update Tue Apr 11 01:09:56 2017 Melvin Personnier
+// Last update Wed Apr 12 16:26:03 2017 Melvin Personnier
 //
 
+#include "SnakeGame.hpp"
 #include "Snake.hpp"
 #include "Protocol.hpp"
 
-void MapToGetMap(arcade::CommandType cmd, Snake *snake)
+void getWhereAmI(arcade::CommandType command, Snake *snake)
+{
+  snake->getWhereAmI()->type = command;
+  std::cout.write(reinterpret_cast<char *>(snake->getWhereAmI()), sizeof(struct arcade::WhereAmI) +
+    sizeof(arcade::Position) * snake->getWhereAmI()->lenght);
+}
+
+void getMapToGetMap(arcade::CommandType command, Snake *snake)
 {
   int sizeOfStruct = sizeof(struct arcade::GetMap) +
     sizeof(arcade::TileType) * (snake->getMap()->getWidth() * snake->getMap()->getHeight());
@@ -25,7 +33,7 @@ void MapToGetMap(arcade::CommandType cmd, Snake *snake)
   int height = 0;
   int width = 0;
 
-  getMap->type = cmd;
+  getMap->type = command;
   getMap->height = snake->getMap()->getHeight();
   getMap->width = snake->getMap()->getWidth();
 
@@ -39,7 +47,7 @@ void MapToGetMap(arcade::CommandType cmd, Snake *snake)
     			getMap->tile[caseToUpdate] = arcade::TileType::EMPTY;
     		else if (snake->getMap()->getCaseInfo(width, height) == Map::Info::BLOCK)
     			getMap->tile[caseToUpdate] = arcade::TileType::BLOCK;
-    		else if (snake->getMap()->getCaseInfo(width, height) == Map::Info::PLAYER)
+    		else if (snake->getMap()->getCaseInfo(width, height) == Map::Info::SNAKE)
     			getMap->tile[caseToUpdate] = arcade::TileType::EMPTY;
     		else if (snake->getMap()->getCaseInfo(width, height) == Map::Info::POWERUP)
     			getMap->tile[caseToUpdate] = arcade::TileType::POWERUP;
@@ -47,34 +55,31 @@ void MapToGetMap(arcade::CommandType cmd, Snake *snake)
       }
       ++height;
     }
-  	write(1, getMap, sizeOfStruct);
+  	std::cout.write(reinterpret_cast<char *>(getMap), sizeOfStruct);
 
 }
 
 extern "C"  void		Play(void)
 {
   arcade::CommandType command;
-  Snake *snake;
-  snake = new Snake(30, 30);
+  Snake *snake = new Snake(12, 12);
 
   while (std::cin)
   {
     std::cin.read(reinterpret_cast<char *>(&command), sizeof(arcade::CommandType));
     if (command == arcade::CommandType::WHERE_AM_I)
-      std::cout << "where" << std::endl;
+      getWhereAmI(command, snake);
     else if (command == arcade::CommandType::GET_MAP)
-      MapToGetMap(command, snake);
+      getMapToGetMap(command, snake);
     else if (command == arcade::CommandType::GO_UP)
-      std::cout << "up" << std::endl;
+      snake->setDir(Snake::Direction::UP);
     else if (command == arcade::CommandType::GO_DOWN)
-      std::cout << "down" << std::endl;
+      snake->setDir(Snake::Direction::DOWN);
     else if (command == arcade::CommandType::GO_LEFT)
-      std::cout << "left" << std::endl;
+      snake->setDir(Snake::Direction::LEFT);
     else if (command == arcade::CommandType::GO_RIGHT)
-      std::cout << "right" << std::endl;
-    else if (command == arcade::CommandType::GO_FORWARD)
-      std::cout << "forward" << std::endl;
+      snake->setDir(Snake::Direction::RIGHT);
     else if (command == arcade::CommandType::PLAY)
-      std::cout << "play" << std::endl;
+      snake->goPlay();
     }
 }

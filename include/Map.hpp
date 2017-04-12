@@ -5,7 +5,7 @@
 // Login   <person_m@epitech.eu>
 //
 // Started on  Sun Apr  9 20:32:50 2017 Melvin Personnier
-// Last update Mon Apr 10 22:05:20 2017 Melvin Personnier
+// Last update Tue Apr 11 22:05:46 2017 Melvin Personnier
 //
 
 #ifndef __MAP_HPP__
@@ -20,7 +20,7 @@ class Map
     {
       EMPTY = 0,
       BLOCK = 1,
-      PLAYER = 2,
+      SNAKE = 2,
       POWERUP = 6,
       ERROR = 7
     };
