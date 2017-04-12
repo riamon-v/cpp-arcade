@@ -22,6 +22,15 @@ LibManager::~LibManager()
     dlclose(_handle);
 }
 
+void LibManager::Switch(std::string lib)
+{
+  if (_handle)
+    dlclose(_handle);
+  if (!(_handle = dlopen(lib.c_str(), RTLD_LAZY)))
+    _dl_error = dlerror();
+  _lib = lib;
+}
+
 std::string LibManager::getLib() const
 {
   return _lib;

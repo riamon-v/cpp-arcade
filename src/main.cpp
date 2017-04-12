@@ -11,14 +11,17 @@
 #include <unistd.h>
 #include "IDisplay.hpp"
 #include "LibManager.hpp"
+#include "InputManager.hpp"
 
-void		main_loop()
+void		main_loop(IDisplay *lib, LibManager *lman)
 {
+  InputManager Iman(lman, lib);
   int		is_running;
 
   is_running = 1;
   while (is_running)
     {
+      Iman.do_action(is_running, Iman._lib->getInputs());
       //Input gestion
       //Game logic
       //Display
@@ -44,7 +47,7 @@ int		main(int argc, char **argv)
   if (Lman->Error())
     return ((std::cerr<< Lman->Error() << std::endl) && 1);
   lib = clone();
-  lib->getInputs();
+  main_loop(lib, Lman);
   delete lib;
   delete Lman;
   return (0);
