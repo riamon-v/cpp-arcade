@@ -5,7 +5,7 @@
 ## Login   <riamon_v@epitech.net>
 ##
 ## Started on  Thu Apr  6 18:10:28 2017 Riamon Vincent
-## Last update Tue Apr 11 00:06:38 2017 Melvin Personnier
+## Last update Tue Apr 11 21:28:34 2017 Melvin Personnier
 ##
 
 NAME:=		../../games/lib_arcade_snake.so
@@ -14,8 +14,10 @@ SRCDIR:=	src/
 INCLUDE:=	../../include
 
 SRC:=		main.cpp \
+				SnakeGame.cpp \
+				Map.cpp \
 				Snake.cpp \
-				Map.cpp
+				Errors.cpp
 
 CXX:=		g++
 CXXFLAGS:=	-W -Wall -Wextra -fpic -g -std=c++14

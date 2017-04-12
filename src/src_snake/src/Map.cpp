@@ -5,7 +5,7 @@
 // Login   <person_m@epitech.eu>
 //
 // Started on  Sun Apr  9 21:29:22 2017 Melvin Personnier
-// Last update Mon Apr 10 22:13:03 2017 Melvin Personnier
+// Last update Wed Apr 12 15:34:49 2017 Melvin Personnier
 //
 
 #include "Map.hpp"
@@ -17,7 +17,7 @@ Map::Map(int width, int height)
   _map = new Info*[_height];
   for(int i = 0; i < _height; ++i)
       _map[i] = new Info[_width];
-    init();
+  init();
 }
 
 Map::~Map()
