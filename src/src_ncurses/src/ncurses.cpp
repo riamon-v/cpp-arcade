@@ -5,7 +5,7 @@
 // Login   <riamon_v@epitech.net>
 //
 // Started on  Mon Apr 10 20:58:59 2017 Riamon Vincent
-// Last update Tue Apr 11 21:36:33 2017 Riamon Vincent
+// Last update Thu Apr 13 19:01:30 2017 Riamon Vincent
 //
 
 #include "Ncurses.hpp"
@@ -73,9 +73,27 @@ int Ncurses::configure(unsigned int width, unsigned int height)
   return (0);
 }
 
-void Ncurses::display(void *data) const
+void Ncurses::display(std::vector<TileInfo> const &_tiles)// const
 {
-  (void)data;
+  unsigned int x;
+  unsigned int y;
+
+  x = 0;
+  y = 0;
+  for (int i = 0; i < MAP_W * MAP_H; i++)
+    {
+      if (i != 0 && !(i % MAP_W))
+	{
+	  x = 0;
+	  y += WIN_H / MAP_H;
+	}
+      init_color(COLOR_BLACK, _tiles[i].color.rgba[0],
+		 _tiles[i].color.rgba[1],
+		 _tiles[i].color.rgba[2]);
+      draw_case(x, y, COLOR_BLACK);
+      x += WIN_W / MAP_W;
+    }
+
 }
 
 void Ncurses::displayMenu(void *data) const

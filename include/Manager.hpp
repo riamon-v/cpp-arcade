@@ -9,16 +9,17 @@
 #include <functional>
 #include <utility>
 #include "IDisplay.hpp"
-#include "LibManager.hpp"
-#include "Snake.hpp"
+#include "ILogic.hpp"
+#include "GLManager.hpp"
 
 class Manager
 {
 public:
-  Manager(LibManager *, IDisplay *, int);
+  Manager(GLManager *, IDisplay *, GLManager *, ILogic *);
   ~Manager();
   void do_action(Input);
   std::string name_next_lib(int mode);
+  std::string name_next_game(int mode);
   void switch_lib(int mode);
   void switch_game(int mode);
   void restart();
@@ -31,11 +32,13 @@ public:
   void launch_game();
 
 public:
-  LibManager *_Lman;
+  GLManager *_Lman;
   IDisplay *_lib;
+  GLManager *_Gman;
+  ILogic *_game;
   std::vector<std::string> _libs;
+  std::vector<std::string> _games;
   int is_running;
-  Snake *_snk; //TODO temprary
 };
 
 #endif //MANAGER_HPP_
