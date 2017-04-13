@@ -5,7 +5,7 @@
 ## Login   <riamon_v@epitech.net>
 ##
 ## Started on  Thu Apr  6 18:10:28 2017 Riamon Vincent
-## Last update Mon Apr 10 21:49:00 2017 Riamon Vincent
+## Last update Wed Apr 12 18:19:00 2017 Melvin Personnier
 ##
 
 NAME:=		../../lib/lib_arcade_sfml.so
@@ -13,7 +13,7 @@ SRCDIR:=	src/
 
 INCLUDE:=	../../include\
 
-SRC:=		sfml.cpp \
+SRC:=		#sfml.cpp \
 
 CXX:=		g++
 CXXFLAGS:=	-W -Wall -Wextra -fpic -g -std=c++14 -lsfml-audio \

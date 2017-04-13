@@ -1,11 +1,11 @@
 ##
 ## Makefile for Makfile in /home/riamon_v/rendu/CPP/cpp_arcade/src_liblapin
-## 
+##
 ## Made by Riamon Vincent
 ## Login   <riamon_v@epitech.net>
-## 
+##
 ## Started on  Thu Apr  6 18:10:28 2017 Riamon Vincent
-## Last update Tue Apr 11 13:24:51 2017 Riamon Vincent
+## Last update Wed Apr 12 18:18:30 2017 Melvin Personnier
 ##
 
 NAME:=		../../lib/lib_arcade_lapin.so
@@ -14,7 +14,7 @@ SRCDIR:=	src/
 INCLUDE:=	../../include \
 		/home/${USER}/.froot/include/ \
 
-SRC:=		lapin.cpp \
+SRC:=		#lapin.cpp \
 
 CXX:=		g++
 CXXFLAGS:=	-W -Wall -Wextra -fpic -g -std=c++14 \

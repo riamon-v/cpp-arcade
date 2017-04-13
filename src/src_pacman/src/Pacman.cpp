@@ -5,14 +5,14 @@
 // Login   <person_m@epitech.eu>
 //
 // Started on  Thu Apr 13 09:49:51 2017 Melvin Personnier
-// Last update Thu Apr 13 19:55:51 2017 Melvin Personnier
+// Last update Thu Apr 13 22:21:16 2017 Melvin Personnier
 //
 
 #include "Pacman.hpp"
 
 Pacman::Pacman(int width, int height)
 {
-  if (width != 28 || height != 31)
+  if (width != 27 || height != 31)
     throw MapToSmall("Map's width must be == 28 && Map's height == 31");
   int sizeOfStruct = sizeof(struct arcade::WhereAmI) +
    sizeof(arcade::Position);
@@ -20,7 +20,7 @@ Pacman::Pacman(int width, int height)
   _whereAmI = reinterpret_cast<struct arcade::WhereAmI *>
          (new char[sizeOfStruct]);
   _whereAmI->lenght = 1;
-  _whereAmI->position[0].x = 14;
+  _whereAmI->position[0].x = 13;
   _whereAmI->position[0].y = 23;
   _gameOver = false;
   _dir = Direction::LEFT;

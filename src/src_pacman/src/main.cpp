@@ -5,7 +5,7 @@
 // Login   <riamon_v@epitech.net>
 //
 // Started on  Fri Apr  7 16:29:42 2017 Riamon Vincent
-// Last update Thu Apr 13 20:01:51 2017 Melvin Personnier
+// Last update Thu Apr 13 22:23:38 2017 Melvin Personnier
 //
 
 #include <unistd.h>
@@ -61,7 +61,7 @@ void Pacman::getMapToGetMap(arcade::CommandType command, Pacman *pacman)
 extern "C"  void		Play(void)
 {
   arcade::CommandType command;
-  Pacman *pacman = new Pacman(28, 31);
+  Pacman *pacman = new Pacman(27, 31);
 
   while (std::cin)
   {
@@ -83,32 +83,32 @@ extern "C"  void		Play(void)
     }
 }
 
-// void print_tab(Map *test)
-// {
-//   int i = 0;
-//   int j;
-//   while (i < 31)
-//   {
-//     j = 0;
-//     while (j < 28) {
-//       if (test->getCaseInfo(j, i) == Map::BLOCK)
-//         std::cout << "1";
-//       if (test->getCaseInfo(j, i) == Map::EMPTY)
-//         std::cout << "0";
-//       if (test->getCaseInfo(j, i) == Map::POWERUP)
-//           std::cout << "*";
-//       if (test->getCaseInfo(j, i) == Map::DOOR)
-//           std::cout << "-";
-//       j++;
-//       }
-//       std::cout << std::endl;
-//     i++;
-//   }
-// }
-//
-// int main()
-// {
-//   Map *test = new Map(28, 31);
-//
-//   print_tab(test);
-// }
+void print_tab(Map *test)
+{
+  int i = 0;
+  int j;
+  while (i < 31)
+  {
+    j = 0;
+    while (j < 27) {
+      if (test->getCaseInfo(j, i) == Map::BLOCK)
+        std::cout << "1";
+      if (test->getCaseInfo(j, i) == Map::EMPTY)
+        std::cout << "0";
+      if (test->getCaseInfo(j, i) == Map::POWERUP)
+          std::cout << "*";
+      if (test->getCaseInfo(j, i) == Map::DOOR)
+          std::cout << "-";
+      j++;
+      }
+      std::cout << std::endl;
+    i++;
+  }
+}
+
+int main()
+{
+  Map *test = new Map(27, 31);
+
+  print_tab(test);
+}
