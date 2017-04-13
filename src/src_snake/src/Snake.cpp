@@ -33,17 +33,17 @@ Snake::Snake(int width, int height)
 
 Snake::~Snake()
 {
-	delete _map;
+  delete _map;
 }
 
 Map *Snake::getMap() const
 {
-	return _map;
+  return _map;
 }
 
 arcade::WhereAmI *Snake::getWhereAmI() const
 {
-	return _whereAmI;
+  return _whereAmI;
 }
 
 Snake::Direction Snake::getDir() const
@@ -215,4 +215,84 @@ void Snake::goPlay()
     this->goLeft();
   else if (_dir == Direction::RIGHT)
     this->goRight();
+}
+
+int Snake::is_in_list(int x, int y) const
+{
+  int i;
+
+  i = -1;
+  while (++i < _whereAmI->lenght)
+    {
+      if (_whereAmI->position[i].x == x && _whereAmI->position[i].y == y)
+	return (1);
+    }
+  return (0);
+}
+
+const std::vector<TileInfo> &Snake::getTiles()// const
+{
+  int	i;
+  int	x;
+  int	y;
+  //  std::vector<TileInfo> _tiles;
+  TileInfo tile;
+  Pixel pixel;
+
+  i = 0;
+  x = 0;
+  y = 0;
+  tile.filePath = NULL;
+  tile.spriteIndex = 0;
+  _tiles.erase(_tiles.begin(), _tiles.end());
+  while (i < MAP_W * MAP_H)
+    {
+      if (x == MAP_W)
+      	{
+      	  x = 0;
+      	  y += 1;
+      	}
+      if (is_in_list(x, y))
+      	pixel.hexacode = 0xffffff;
+      else if (_map->getCaseInfo(x, y) == Map::Info::BLOCK)
+      	pixel.hexacode = 0xff0000;
+      else if (_map->getCaseInfo(x, y) == Map::Info::EMPTY)
+      	pixel.hexacode = 0x000000;
+      else if (_map->getCaseInfo(x, y) == Map::Info::POWERUP)
+      	pixel.hexacode = 0x0000ff;
+      tile.color = pixel;
+      _tiles.push_back(tile);
+      x++;
+      i++;
+    }
+  return (_tiles);
+}
+
+struct_info Snake::runCommand(arcade::CommandType type)
+{
+  if (type == arcade::CommandType::GO_UP)
+    setDir(Snake::Direction::UP);
+  else if (type  == arcade::CommandType::GO_DOWN)
+    setDir(Snake::Direction::DOWN);
+  else if (type == arcade::CommandType::GO_LEFT)
+    setDir(Snake::Direction::LEFT);
+  else if (type == arcade::CommandType::GO_RIGHT)
+    setDir(Snake::Direction::RIGHT);
+  else if (type == arcade::CommandType::PLAY)
+    goPlay();
+  //  return (reinterpret_cast<struct_info>(i));
+}
+
+const Screen &Snake::getScreen() //const
+{
+  // Screen Screen;
+
+  _screen.width = MAP_W;
+  _screen.height = MAP_H;
+  return (_screen);
+}
+
+ILogic *cln::clone()
+{
+  return new Snake(MAP_W, MAP_H);
 }

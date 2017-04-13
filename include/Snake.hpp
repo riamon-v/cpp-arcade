@@ -11,43 +11,57 @@
 #ifndef __SNAKE_HPP__
 # define __SNAKE_HPP__
 
+# include "ILogic.hpp"
+# include "IDisplay.hpp" 
 # include "Protocol.hpp"
 
-class Snake
+class Snake : public ILogic
 {
-  public:
-    enum Direction
+public:
+  enum Direction
     {
       UP = 2,
       DOWN = 3,
       LEFT = 4,
       RIGHT = 5,
     };
-  private:
-	   Map *_map;
-     arcade::WhereAmI *_whereAmI;
-     bool _gameOver;
-     bool _powerUp;
-     Direction _dir;
+  
+public:
+  Snake(int width, int height);
+  Snake(Snake const &);
+  virtual ~Snake();
+  Snake& operator=(Snake const &);
+  
+  Map *getMap() const;
+  arcade::WhereAmI *getWhereAmI() const;
+  Direction getDir() const;
+  void getWhereAmI(arcade::CommandType command, Snake *snake);
+  void getMapToGetMap(arcade::CommandType command, Snake *snake);
+  
+  void setDir(Direction _dir);
+  void goUp();
+  void goDown();
+  void goLeft();
+  void goRight();
+  void goPlay();
+  int is_in_list(int, int) const;
+  struct_info runCommand(arcade::CommandType type);
+  const std::vector<TileInfo> &getTiles() ;//const;
+  const Screen &getScreen() ;//const;
 
-  public:
-    Snake(int width, int height);
-    Snake(Snake const &);
-    virtual ~Snake();
-    Snake& operator=(Snake const &);
+private:
+  Map *_map;
+  arcade::WhereAmI *_whereAmI;
+  bool _gameOver;
+  bool _powerUp;
+  Direction _dir;
+  std::vector<TileInfo> _tiles;
+  Screen _screen;
+};
 
-    Map *getMap() const;
-    arcade::WhereAmI *getWhereAmI() const;
-    Direction getDir() const;
-    void getWhereAmI(arcade::CommandType command, Snake *snake);
-    void getMapToGetMap(arcade::CommandType command, Snake *snake);
-
-    void setDir(Direction _dir);
-    void goUp();
-    void goDown();
-    void goLeft();
-    void goRight();
-    void goPlay();
+namespace cln
+{
+  extern "C" ILogic *clone();
 };
 
 #endif /* !__SNAKE_HPP__ */

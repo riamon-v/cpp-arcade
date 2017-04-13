@@ -21,7 +21,7 @@ public:
   Sfml();
   virtual ~Sfml();
   int configure(unsigned int width, unsigned int height);
-  void display(void *data) const;
+  void display(std::vector<TileInfo> const &_tiles);// const;
   void displayMenu(void *data) const;
   Input getInputs() const;
   void kill();

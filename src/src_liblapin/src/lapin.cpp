@@ -25,7 +25,6 @@ Lapin::Lapin()
   _inputs[BKS_DOWN] = DOWN;
   _inputs[BKS_RETURN] = PLAY;
   _in = UNDEFINED;
-  std::cout << "Lapin" << std::endl;
   configure(WIN_W, WIN_H);
 }
 
@@ -43,9 +42,24 @@ int Lapin::configure(unsigned int width, unsigned int height)
   return (0);
 }
 
-void Lapin::display(void *data) const
+void Lapin::display(std::vector<TileInfo> const &_tiles)// const
 {
-  (void)data;
+  t_bunny_position pos = {.x = 0, .y = 0};
+  t_color col;
+
+  for (int i = 0; i < MAP_W * MAP_H; i++)
+    {
+      if (i != 0 && !(i % MAP_W))
+	{
+	  pos.x = 0;
+	  pos.y += WIN_H / MAP_H;
+	}
+      col.full = _tiles[i].color.hexacode;
+      draw_case(&pos, &col);
+      pos.x += MAP_W / WIN_W;
+    }	
+  bunny_blit(&_win->buffer, &_pix->clipable, 0);
+  bunny_display(_win);
 }
 
 void Lapin::displayMenu(void *data) const
