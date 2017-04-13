@@ -13,9 +13,10 @@
 
 #include <vector>
 #include <iostream>
+#include "ILogic.hpp"
 
-#define WIN_H 600
-#define WIN_W 600
+#define WIN_H 500
+#define WIN_W 500
 #define MAP_H 20
 #define MAP_W 20
 
@@ -54,11 +55,11 @@ public:
   virtual ~IDisplay() { }
   virtual int configure(unsigned int width, unsigned int height) = 0;
   virtual Input getInputs() const = 0;
-  virtual void display(void *data) const = 0;
+  virtual void display(std::vector<TileInfo> const &_tiles) /*const*/ = 0;
   virtual void displayMenu(void *data) const = 0;
   virtual void kill() = 0;
 };
 
-typedef IDisplay *(*func)();
+typedef IDisplay *(*func_display)();
 
 #endif // __IDISPLAY_HPP__

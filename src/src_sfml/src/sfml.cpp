@@ -50,9 +50,27 @@ int Sfml::configure(unsigned int width, unsigned int height)
   return (0);
 }
 
-void Sfml::display(void *data) const
+void Sfml::display(std::vector<TileInfo> const &_tiles)// const
 {
-  (void)data;
+  sf::Color col;
+  unsigned int x;
+  unsigned int y;
+
+  x = 0;
+  y = 0;
+  for (int i = 0; i < MAP_W * MAP_H; i++)
+    {
+      if (i != 0 && !(i % MAP_W))
+	{
+	  x = 0;
+	  y += WIN_H / MAP_H;
+	}
+      draw_case(x, y, sf::Color(_tiles[i].color.rgba[2],
+				_tiles[i].color.rgba[1],
+				_tiles[i].color.rgba[0]));
+      x += WIN_W / MAP_W;
+    }
+  _window->display();
 }
 
 void Sfml::displayMenu(void *data) const
