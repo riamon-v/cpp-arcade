@@ -1,5 +1,5 @@
-#ifndef INPUTMANAGER_HPP_
-# define INPUTMANAGER_HPP_
+#ifndef MANAGER_HPP_
+# define MANAGER_HPP_
 
 #include <iostream>
 #include <sys/types.h>
@@ -12,11 +12,11 @@
 #include "LibManager.hpp"
 #include "Snake.hpp"
 
-class InputManager
+class Manager
 {
 public:
-  InputManager(LibManager *, IDisplay *, int);
-  ~InputManager();
+  Manager(LibManager *, IDisplay *, int);
+  ~Manager();
   void do_action(Input);
   std::string name_next_lib(int mode);
   void switch_lib(int mode);
@@ -38,4 +38,4 @@ public:
   Snake *_snk; //TODO temprary
 };
 
-#endif //INPUTMANAGER_HPP_
+#endif //MANAGER_HPP_

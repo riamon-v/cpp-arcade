@@ -11,12 +11,12 @@
 #include <unistd.h>
 #include "IDisplay.hpp"
 #include "LibManager.hpp"
-#include "InputManager.hpp"
+#include "Manager.hpp"
 #include "Snake.hpp"
 
 void		main_loop(IDisplay *lib, LibManager *lman)
 {
-  InputManager Iman(lman, lib, 1);
+  Manager Iman(lman, lib, 1);
   // Snake		snk(MAP_W, MAP_H);
 
   // Iman._snk = snk;

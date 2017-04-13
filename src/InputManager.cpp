@@ -1,16 +1,16 @@
 //
 // inputFunction.cpp for inputFunction in /home/riamon_v/rendu/CPP/cpp_arcade/src
-// 
+//
 // Made by Riamon Vincent
 // Login   <riamon_v@epitech.net>
-// 
+//
 // Started on  Thu Apr  6 18:54:40 2017 Riamon Vincent
 // Last update Mon Apr 10 17:47:27 2017 Riamon Vincent
 //
 
-#include "InputManager.hpp"
+#include "Manager.hpp"
 
-InputManager::InputManager(LibManager *lman, IDisplay *lib, int run) : _Lman(lman), _lib(lib), is_running(run)
+Manager::Manager(LibManager *lman, IDisplay *lib, int run) : _Lman(lman), _lib(lib), is_running(run)
 {
   DIR *dir;
   struct dirent *entry;
@@ -26,11 +26,11 @@ InputManager::InputManager(LibManager *lman, IDisplay *lib, int run) : _Lman(lma
   closedir(dir);
 }
 
-InputManager::~InputManager()
+Manager::~Manager()
 {
 }
 
-void InputManager::do_action(Input in)
+void Manager::do_action(Input in)
 {
   /*  std::map<Input, std::function<void()>> _fun;
 
@@ -101,7 +101,7 @@ void InputManager::do_action(Input in)
     launch_game();
 }
 
-std::string InputManager::name_next_lib(int mode)
+std::string Manager::name_next_lib(int mode)
 {
   for (unsigned int i = 0; i < _libs.size(); i++)
     {
@@ -113,7 +113,7 @@ std::string InputManager::name_next_lib(int mode)
   return (NULL);
 }
 
-void InputManager::switch_lib(int mode)
+void Manager::switch_lib(int mode)
 {
   std::string lib_name;
   std::string dir("./lib/");
@@ -124,7 +124,7 @@ void InputManager::switch_lib(int mode)
     return ;
   if (static_cast<std::string>(lib_name) == _Lman->getLib())
     return ;
-  if (InputManager::is_running)
+  if (Manager::is_running)
     delete _lib;
   std::cout << "Switch to " << lib_name << std::endl;
   _Lman->Switch(dir + lib_name);
@@ -132,53 +132,53 @@ void InputManager::switch_lib(int mode)
   _lib = clone();
 }
 
-void InputManager::switch_game(int mode)
+void Manager::switch_game(int mode)
 {
   (void)mode;
   std::cout << "Switch Game" << std::endl;
 }
 
-void InputManager::restart()
+void Manager::restart()
 {
   std::cout << "Restart Game" << std::endl;
 }
 
-void InputManager::menu()
+void Manager::menu()
 {
   std::cout << "Display Menu" << std::endl;
 }
 
-void InputManager::my_exit()
+void Manager::my_exit()
 {
-  InputManager::is_running = 0;
+  Manager::is_running = 0;
   std::cout << "Exit" << std::endl;
 }
 
-void InputManager::goRight()
+void Manager::goRight()
 {
   // _snk->setDir(Snake::Direction::RIGHT);
   std::cout << "Go Right" << std::endl;
 }
 
-void InputManager::goLeft()
+void Manager::goLeft()
 {
   // _snk->setDir(Snake::Direction::LEFT);
   std::cout << "Go Left" << std::endl;
 }
 
-void InputManager::goUp()
+void Manager::goUp()
 {
   //_snk->setDir(Snake::Direction::UP);
   std::cout << "Go Up" << std::endl;
 }
 
-void InputManager::goDown()
+void Manager::goDown()
 {
   //  _snk->setDir(Snake::Direction::DOWN);
   std::cout << "Go Down" << std::endl;
 }
 
-void InputManager::launch_game()
+void Manager::launch_game()
 {
   std::cout << "Start game" << std::endl;
 }
