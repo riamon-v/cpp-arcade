@@ -5,7 +5,7 @@
 // Login   <riamon_v@epitech.net>
 // 
 // Started on  Mon Apr 10 20:52:22 2017 Riamon Vincent
-// Last update Tue Apr 11 21:38:24 2017 Riamon Vincent
+// Last update Thu Apr 13 22:20:23 2017 Riamon Vincent
 //
 
 #include "Llapin.hpp"
@@ -15,7 +15,7 @@ Lapin::Lapin()
   _inputs[BKS_2] = PREV_LIB;
   _inputs[BKS_3] = NEXT_LIB;
   _inputs[BKS_4] = PREV_GAME;
-  _inputs[BKS_5] = PREV_GAME;
+  _inputs[BKS_5] = NEXT_GAME;
   _inputs[BKS_8] = RESTART;
   _inputs[BKS_9] = MENU;
   _inputs[BKS_ESCAPE] = EXIT;
@@ -57,7 +57,7 @@ void Lapin::display(std::vector<TileInfo> const &_tiles)// const
       col.full = _tiles[i].color.hexacode;
       draw_case(&pos, &col);
       pos.x += MAP_W / WIN_W;
-    }	
+    }
   bunny_blit(&_win->buffer, &_pix->clipable, 0);
   bunny_display(_win);
 }

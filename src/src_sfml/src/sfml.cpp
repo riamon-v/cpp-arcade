@@ -5,7 +5,7 @@
 // Login   <riamon_v@epitech.net>
 //
 // Started on  Mon Apr 10 21:02:03 2017 Riamon Vincent
-// Last update Tue Apr 11 21:56:37 2017 Riamon Vincent
+// Last update Thu Apr 13 22:01:46 2017 Riamon Vincent
 //
 
 #include "Sfml.hpp"
@@ -17,7 +17,7 @@ Sfml::Sfml()
   _inputs[sf::Keyboard::Num2] = PREV_LIB;
   _inputs[sf::Keyboard::Num3] = NEXT_LIB;
   _inputs[sf::Keyboard::Num4] = PREV_GAME;
-  _inputs[sf::Keyboard::Num5] = PREV_GAME;
+  _inputs[sf::Keyboard::Num5] = NEXT_GAME;
   _inputs[sf::Keyboard::Num8] = RESTART;
   _inputs[sf::Keyboard::Num9] = MENU;
   _inputs[sf::Keyboard::Escape] = EXIT;

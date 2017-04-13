@@ -5,15 +5,17 @@
 // Login   <person_m@epitech.eu>
 //
 // Started on  Wed Apr 12 22:11:13 2017 Melvin Personnier
-// Last update Thu Apr 13 13:31:19 2017 Melvin Personnier
+// Last update Thu Apr 13 20:52:04 2017 Riamon Vincent
 //
 
 #ifndef __PACMAN_HPP__
 # define __PACMAN_HPP__
 
+# include "ILogic.hpp"
+# include "IDisplay.hpp"
 # include "Protocol.hpp"
 
-class Pacman
+class Pacman : public ILogic
 {
   public:
     enum Direction
@@ -23,11 +25,6 @@ class Pacman
       LEFT = 4,
       RIGHT = 5,
     };
-  private:
-    Map *_map;
-    arcade::WhereAmI *_whereAmI;
-    bool _gameOver;
-    Direction _dir;
 
   public:
     Pacman(int width, int height);
@@ -47,6 +44,22 @@ class Pacman
     void goLeft();
     void goRight();
     void goPlay();
+  struct_info runCommand(arcade::CommandType type);
+  const std::vector<TileInfo> &getTiles() ;//const;
+  const Screen &getScreen() ;//const;
+
+private:
+  Map *_map;
+  arcade::WhereAmI *_whereAmI;
+  bool _gameOver;
+  Direction _dir;
+  std::vector<TileInfo> _tiles;
+  Screen _screen;
+};
+
+namespace cln
+{
+  extern "C" ILogic *clone();
 };
 
 #endif /* !__PACMAN_HPP__ */

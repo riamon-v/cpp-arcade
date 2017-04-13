@@ -5,7 +5,7 @@
 // Login   <riamon_v@epitech.net>
 //
 // Started on  Thu Apr  6 18:56:31 2017 Riamon Vincent
-// Last update Thu Apr 13 18:21:12 2017 Riamon Vincent
+// Last update Thu Apr 13 23:36:29 2017 Riamon Vincent
 //
 
 #include <unistd.h>
@@ -47,7 +47,7 @@ int		main(int argc, char **argv)
       return (84);
     }
   Lman = new GLManager(argv[1]);
-  Gman = new GLManager("games/lib_arcade_snake.so");
+  Gman = new GLManager("games/lib_arcade_pacman.so");
   if (Lman->Error())
     return ((std::cerr << Lman->Error() << std::endl) && 1);
   if (Gman->Error())

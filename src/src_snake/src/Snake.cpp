@@ -5,7 +5,7 @@
 // Login   <person_m@epitech.eu>
 //
 // Started on  Tue Apr 11 17:18:54 2017 Melvin Personnier
-// Last update Thu Apr 13 19:55:56 2017 Melvin Personnier
+// Last update Thu Apr 13 23:45:27 2017 Riamon Vincent
 //
 
 #include "Snake.hpp"
@@ -63,9 +63,9 @@ void Snake::goUp()
   if (_dir == Direction::DOWN)
     return ;
   if (this->getMap()->getCaseInfo(this->getWhereAmI()->position[0].x,
-      this->getWhereAmI()->position[0].y - 1 != Map::Info::EMPTY) &&
+				  this->getWhereAmI()->position[0].y - 1) != Map::Info::EMPTY &&
       this->getMap()->getCaseInfo(this->getWhereAmI()->position[0].x,
-      this->getWhereAmI()->position[0].y - 1 != Map::Info::POWERUP))
+				  this->getWhereAmI()->position[0].y - 1)!= Map::Info::POWERUP)
     {
       _gameOver = true;
     }
@@ -100,9 +100,9 @@ void Snake::goDown()
   if (_dir == Direction::UP)
     return ;
   if (this->getMap()->getCaseInfo(this->getWhereAmI()->position[0].x,
-      this->getWhereAmI()->position[0].y + 1 != Map::Info::EMPTY) &&
+				  this->getWhereAmI()->position[0].y + 1)!= Map::Info::EMPTY  &&
       this->getMap()->getCaseInfo(this->getWhereAmI()->position[0].x,
-      this->getWhereAmI()->position[0].y + 1 != Map::Info::POWERUP))
+				  this->getWhereAmI()->position[0].y + 1)!= Map::Info::POWERUP)
     {
       _gameOver = true;
     }
@@ -137,9 +137,9 @@ void Snake::goLeft()
   if (_dir == Direction::RIGHT)
     return ;
   if (this->getMap()->getCaseInfo(this->getWhereAmI()->position[0].x - 1,
-      this->getWhereAmI()->position[0].y != Map::Info::EMPTY) &&
+				  this->getWhereAmI()->position[0].y) != Map::Info::EMPTY  &&
       this->getMap()->getCaseInfo(this->getWhereAmI()->position[0].x - 1,
-      this->getWhereAmI()->position[0].y != Map::Info::POWERUP))
+				  this->getWhereAmI()->position[0].y) != Map::Info::POWERUP)
     {
       _gameOver = true;
     }
@@ -174,9 +174,9 @@ void Snake::goRight()
   if (_dir == Direction::LEFT)
     return ;
   if (this->getMap()->getCaseInfo(this->getWhereAmI()->position[0].x + 1,
-      this->getWhereAmI()->position[0].y != Map::Info::EMPTY) &&
+				  this->getWhereAmI()->position[0].y) != Map::Info::EMPTY &&
       this->getMap()->getCaseInfo(this->getWhereAmI()->position[0].x + 1,
-      this->getWhereAmI()->position[0].y != Map::Info::POWERUP))
+				  this->getWhereAmI()->position[0].y) != Map::Info::POWERUP)
     {
       _gameOver = true;
     }
@@ -270,6 +270,8 @@ const std::vector<TileInfo> &Snake::getTiles()// const
 
 struct_info Snake::runCommand(arcade::CommandType type)
 {
+  struct_info null;
+
   if (type == arcade::CommandType::GO_UP)
     setDir(Snake::Direction::UP);
   else if (type  == arcade::CommandType::GO_DOWN)
@@ -280,7 +282,7 @@ struct_info Snake::runCommand(arcade::CommandType type)
     setDir(Snake::Direction::RIGHT);
   else if (type == arcade::CommandType::PLAY)
     goPlay();
-  //  return (reinterpret_cast<struct_info>(i));
+  return (null);
 }
 
 const Screen &Snake::getScreen() //const

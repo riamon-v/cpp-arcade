@@ -5,7 +5,7 @@
 // Login   <riamon_v@epitech.net>
 //
 // Started on  Mon Apr 10 21:05:22 2017 Riamon Vincent
-// Last update Tue Apr 11 17:58:27 2017 Riamon Vincent
+// Last update Thu Apr 13 23:37:05 2017 Riamon Vincent
 //
 
 #ifndef __IDISPLAY_HPP__
@@ -15,10 +15,10 @@
 #include <iostream>
 #include "ILogic.hpp"
 
-#define WIN_H 500
-#define WIN_W 500
-#define MAP_H 20
-#define MAP_W 20
+#define WIN_H 620
+#define WIN_W 560
+#define MAP_H 31
+#define MAP_W 28
 
 enum Input {
   UNDEFINED = 0,
