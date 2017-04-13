@@ -253,8 +253,15 @@ gameLib Manager::menu()
   for (size_t i = 0; i < _libs.size(); i++) {
     v.value = _libs[i];
     v.checked = 0;
-    v.pointed = (_libs[i] == _Lman->getLib());
+    v.pointed = (_libs[i] == _Lman->getName());
     s.graphics.push_back(v);
+  }
+
+  for (size_t i = 0; i < _games.size(); i++) {
+    v.value = _games[i];
+    v.checked = 0;
+    v.pointed = (i == 0);
+    s.games.push_back(v);
   }
 
   while (run)
