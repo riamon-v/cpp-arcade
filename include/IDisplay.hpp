@@ -13,10 +13,10 @@
 
 #include <iostream>
 
-#define WIN_H 1000
-#define WIN_W 1000
-#define MAP_H 50
-#define MAP_W 50
+#define WIN_H 600
+#define WIN_W 600
+#define MAP_H 20
+#define MAP_W 20
 
 enum Input {
   UNDEFINED = 0,
