@@ -1,9 +1,9 @@
 //
 // ncurses.cpp for Ncurses in /home/riamon_v/rendu/CPP/cpp_arcade/src/src_liblapin/src
-// 
+//
 // Made by Riamon Vincent
 // Login   <riamon_v@epitech.net>
-// 
+//
 // Started on  Mon Apr 10 20:58:59 2017 Riamon Vincent
 // Last update Tue Apr 11 21:36:33 2017 Riamon Vincent
 //
@@ -31,6 +31,32 @@ Ncurses::Ncurses()
 Ncurses::~Ncurses()
 {
   kill();
+}
+
+void Ncurses::draw_case(unsigned int x, unsigned int y,
+                       const unsigned int c)
+{
+  int    i;
+  int    j;
+
+  start_color();
+  init_pair(c, c, c);
+  wattron(_win, COLOR_PAIR(c));
+  i = 0;
+  while (i < (WIN_H / MAP_H) / 4)
+  {
+    j = 0;
+    while (j < (WIN_W / MAP_W) / 8)
+    {
+      mvwprintw(_win, x, y, "%c", ' ');
+      x = x + 1;
+      j = j + 1;
+    }
+    x = x - j;
+    i = i + 1;
+    y = y + 1;
+  }
+  wattroff(_win, COLOR_PAIR(c));
 }
 
 int Ncurses::configure(unsigned int width, unsigned int height)

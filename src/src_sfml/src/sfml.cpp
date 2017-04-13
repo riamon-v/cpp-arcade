@@ -26,7 +26,6 @@ Sfml::Sfml()
   _inputs[sf::Keyboard::Up] = UP;
   _inputs[sf::Keyboard::Down] = DOWN;
   _inputs[sf::Keyboard::Return] = PLAY;
-  std::cout << "Sfml" << std::endl;
 }
 
 Sfml::~Sfml()
@@ -59,6 +58,9 @@ void Sfml::display(void *data) const
 void Sfml::displayMenu(void *data) const
 {
   (void)data;
+  sf::RectangleShape btn1(sf::Vector2f((WIN_W / MAP_W), (WIN_H / MAP_H)));
+  sf::RectangleShape btn2(sf::Vector2f((WIN_W / MAP_W), (WIN_H / MAP_H)));
+
 }
 
 Input Sfml::getInputs() const
