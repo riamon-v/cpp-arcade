@@ -143,9 +143,99 @@ void Manager::restart()
   std::cout << "Restart Game" << std::endl;
 }
 
-void Manager::menu()
+void Manager::_moveChecked(std::vector<t_value_menu> &v1, std::vector<t_value_menu> &v2)
 {
-  std::cout << "Display Menu" << std::endl;
+  for (size_t i = 0; i < v1.size(); i++) {
+    v1[i].checked = !v1[i].checked;
+  }
+
+  for (size_t i = 0; i < v2.size(); i++) {
+    v2[i].checked = !v2[i].checked;
+  }
+}
+
+void Manager::_movePointed(std::vector<t_value_menu> &v, const char c)
+{
+  unsigned int i = 0;
+
+  while (i < v.size() && !v[i].pointed)
+   i = i + 1;
+  if (v.size() >= i)
+  {
+    v[0].pointed = 1;
+    return ;
+  }
+  if (c)
+  {
+    v[i].pointed = 0;
+    v[(i + 1 >= v.size() ? 0 : i + 1)].pointed = 1;
+  }
+  else
+  {
+    v[i].pointed = 0;
+    v[(i <= 0 ? v.size() - 1 : i - 1)].pointed = 1;
+  }
+}
+
+void Manager::_getPointedElems(const t_info_menu &s, gameLib &ret)
+{
+  for (size_t i = 0; i < s.graphics.size(); i++) {
+    if (s.graphics[i].pointed)
+      ret.lib = s.graphics[i].value;
+  }
+
+  for (size_t i = 0; i < s.games.size(); i++) {
+    if (s.games[i].pointed)
+      ret.game = s.games[i].value;
+  }
+}
+
+void Manager::_runCmdMenu(const Input inp, t_info_menu &s, bool &run, gameLib &ret)
+{
+  if (inp == Input::NEXT_LIB || (inp == Input::DOWN && s.graphics[0].checked))
+    _movePointed(s.graphics, 1);
+  else if (inp == Input::NEXT_GAME || (inp == Input::DOWN && s.games[0].checked))
+    _movePointed(s.games, 1);
+  else if (inp == Input::PREV_LIB || (inp == Input::UP && s.graphics[0].checked))
+    _movePointed(s.graphics, 0);
+  else if (inp == Input::PREV_GAME || (inp == Input::DOWN && s.games[0].checked))
+    _movePointed(s.games, 0);
+  else if (inp == Input::LEFT || inp == Input::RIGHT)
+    _moveChecked(s.games, s.graphics);
+  else if (inp == Input::PLAY || inp == Input::EXIT)
+    {
+      run = false;
+      if (inp == Input::PLAY)
+        _getPointedElems(s, ret);
+    }
+}
+
+gameLib Manager::menu()
+{
+  t_info_menu s;
+  t_value_menu v;
+  gameLib ret;
+  bool  run = true;
+
+  ret.game = "";
+  ret.lib = "";
+  for (size_t i = 0; i < _libs.size(); i++) {
+    v.value = _libs[i];
+    v.checked = 0;
+    v.pointed = (_libs[i] == _Lman->getLib());
+    s.graphics.push_back(v);
+  }
+
+  while (run)
+  {
+    Input inp;
+    if ((inp = _lib->getInputs()) != Input::UNDEFINED)
+    {
+      _runCmdMenu(inp, s, run, ret);
+      _lib->displayMenu(&s);
+    }
+  }
+ return (ret);
 }
 
 void Manager::my_exit()

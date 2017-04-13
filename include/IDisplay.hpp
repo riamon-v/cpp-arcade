@@ -1,9 +1,9 @@
 //
 // IDisplay.hpp for IDisplay in /home/riamon_v/rendu/CPP/cpp_arcade/include
-// 
+//
 // Made by Riamon Vincent
 // Login   <riamon_v@epitech.net>
-// 
+//
 // Started on  Mon Apr 10 21:05:22 2017 Riamon Vincent
 // Last update Tue Apr 11 17:58:27 2017 Riamon Vincent
 //
@@ -11,6 +11,7 @@
 #ifndef __IDISPLAY_HPP__
 # define __IDISPLAY_HPP__
 
+#include <vector>
 #include <iostream>
 
 #define WIN_H 600
@@ -33,6 +34,20 @@ enum Input {
   DOWN,
   PLAY
 };
+
+typedef struct		s_value_menu {
+  std::string			value;
+  int				checked;
+  int				pointed;
+}				t_value_menu;
+
+typedef struct		s_info_menu {
+  std::vector<t_value_menu>	games;
+  std::vector<t_value_menu>	graphics;
+  std::vector<t_value_menu>	score;
+  std::string			playerName;
+  unsigned int		timer;
+}				t_info_menu;
 
 class IDisplay {
 public:

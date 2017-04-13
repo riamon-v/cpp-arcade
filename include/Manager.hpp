@@ -12,6 +12,12 @@
 #include "LibManager.hpp"
 #include "Snake.hpp"
 
+struct gameLib
+{
+  std::string game;
+  std::string lib;
+};
+
 class Manager
 {
 public:
@@ -22,13 +28,17 @@ public:
   void switch_lib(int mode);
   void switch_game(int mode);
   void restart();
-  void menu();
+  gameLib menu();
   void my_exit();
   void goRight();
   void goLeft();
   void goUp();
   void goDown();
   void launch_game();
+  void _moveChecked(std::vector<t_value_menu> &v1, std::vector<t_value_menu> &v2);
+  void _runCmdMenu(const Input inp, t_info_menu &s, bool &run, gameLib &ret);
+  void _getPointedElems(const t_info_menu &s, gameLib &ret);
+  void _movePointed(std::vector<t_value_menu> &v, const char c);
 
 public:
   LibManager *_Lman;
