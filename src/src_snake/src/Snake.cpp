@@ -5,7 +5,7 @@
 // Login   <person_m@epitech.eu>
 //
 // Started on  Tue Apr 11 17:18:54 2017 Melvin Personnier
-// Last update Fri Apr 14 00:18:12 2017 Riamon Vincent
+// Last update Fri Apr 14 00:23:28 2017 Riamon Vincent
 //
 
 #include "Snake.hpp"

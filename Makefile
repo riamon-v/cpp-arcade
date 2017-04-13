@@ -5,7 +5,7 @@
 ## Login   <riamon_v@epitech.net>
 ##
 ## Started on  Fri Apr  7 16:19:03 2017 Riamon Vincent
-## Last update Thu Apr 13 20:14:52 2017 Melvin Personnier
+## Last update Fri Apr 14 00:53:23 2017 Riamon Vincent
 ##
 
 NAME:=		arcade
@@ -13,6 +13,7 @@ SRCDIR:=	src/
 INCLUDE:=	include/ \
 
 SRC:=		main.cpp \
+		Exceptions.cpp \
 		GLManager.cpp \
 		Manager.cpp \
 

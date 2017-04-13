@@ -5,7 +5,7 @@
 ## Login   <riamon_v@epitech.net>
 ##
 ## Started on  Thu Apr  6 18:10:28 2017 Riamon Vincent
-## Last update Thu Apr 13 13:54:03 2017 Melvin Personnier
+## Last update Fri Apr 14 00:54:27 2017 Riamon Vincent
 ##
 
 NAME:=		../../games/lib_arcade_pacman.so
@@ -14,9 +14,9 @@ SRCDIR:=	src/
 INCLUDE:=	../../include \
 
 SRC:=		main.cpp \
-				Errors.cpp \
-				Map.cpp \
-				Pacman.cpp
+		../../Errors.cpp \
+		Map.cpp \
+		Pacman.cpp
 
 CXX:=		g++
 CXXFLAGS:=	-W -Wall -Wextra -fpic -g -std=c++14

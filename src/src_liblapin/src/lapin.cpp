@@ -5,7 +5,7 @@
 // Login   <riamon_v@epitech.net>
 // 
 // Started on  Mon Apr 10 20:52:22 2017 Riamon Vincent
-// Last update Thu Apr 13 22:20:23 2017 Riamon Vincent
+// Last update Fri Apr 14 00:40:30 2017 Riamon Vincent
 //
 
 #include "Llapin.hpp"
@@ -35,7 +35,7 @@ Lapin::~Lapin()
 
 int Lapin::configure(unsigned int width, unsigned int height)
 {
-  _win = bunny_start(width, height, 0, "Arcade");
+  _win = bunny_start(width, height, 0, "Arcade : LibLapin");
   _pix = bunny_new_pixelarray(width, height);
   bunny_blit(&_win->buffer, &_pix->clipable, 0);
   bunny_display(_win);

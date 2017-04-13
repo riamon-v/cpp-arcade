@@ -5,14 +5,14 @@
 // Login   <riamon_v@epitech.net>
 //
 // Started on  Mon Apr 10 21:02:03 2017 Riamon Vincent
-// Last update Thu Apr 13 22:01:46 2017 Riamon Vincent
+// Last update Fri Apr 14 00:40:12 2017 Riamon Vincent
 //
 
 #include "Sfml.hpp"
 
 Sfml::Sfml()
 {
-  _window = new sf::RenderWindow(sf::VideoMode(WIN_W, WIN_H), "Arcade");
+  _window = new sf::RenderWindow(sf::VideoMode(WIN_W, WIN_H), "Arcade : SFML");
 
   _inputs[sf::Keyboard::Num2] = PREV_LIB;
   _inputs[sf::Keyboard::Num3] = NEXT_LIB;

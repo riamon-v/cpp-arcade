@@ -5,7 +5,7 @@
 // Login   <person_m@epitech.eu>
 //
 // Started on  Tue Apr 11 21:12:52 2017 Melvin Personnier
-// Last update Tue Apr 11 21:30:07 2017 Melvin Personnier
+// Last update Fri Apr 14 00:45:52 2017 Riamon Vincent
 //
 
 #ifndef __ERROR_HPP__
@@ -30,6 +30,13 @@ class MapToSmall : public Errors
   public:
     MapToSmall(std::string const &message);
     virtual ~MapToSmall() throw();
+};
+
+class FailOpen : public Errors
+{
+  public:
+    FailOpen(std::string const &message);
+    virtual ~FailOpen() throw();
  };
 
 #endif /* !__ERROR_HPP__ */

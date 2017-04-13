@@ -5,7 +5,7 @@
 // Login   <person_m@epitech.eu>
 //
 // Started on  Tue Apr 11 15:03:32 2017 Melvin Personnier
-// Last update Fri Apr 14 00:18:52 2017 Riamon Vincent
+// Last update Fri Apr 14 00:23:49 2017 Riamon Vincent
 //
 
 #ifndef __SNAKE_HPP__
@@ -50,11 +50,11 @@ public:
   std::vector<TileInfo> const  &getTiles() const;
   Screen const  &getScreen() const;
   int const &getSpeed() const;
+  bool _gameOver;
 
 private:
   Map *_map;
   arcade::WhereAmI *_whereAmI;
-  bool _gameOver;
   bool _powerUp;
   Direction _dir;
   std::vector<TileInfo> _tiles;

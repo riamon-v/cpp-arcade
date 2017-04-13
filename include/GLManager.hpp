@@ -5,7 +5,7 @@
 // Login   <riamon_v@epitech.net>
 // 
 // Started on  Thu Apr 13 18:05:29 2017 Riamon Vincent
-// Last update Thu Apr 13 18:26:58 2017 Riamon Vincent
+// Last update Fri Apr 14 00:48:18 2017 Riamon Vincent
 //
 
 #ifndef GLMANAGER_HPP_
@@ -13,6 +13,7 @@
 
 #include <iostream>
 #include <dlfcn.h>
+#include "Errors.hpp"
 
 class GLManager
 {
