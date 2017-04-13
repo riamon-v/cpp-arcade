@@ -5,7 +5,7 @@
 // Login   <riamon_v@epitech.net>
 //
 // Started on  Fri Apr  7 16:29:42 2017 Riamon Vincent
-// Last update Wed Apr 12 18:16:24 2017 Melvin Personnier
+// Last update Thu Apr 13 20:00:44 2017 Melvin Personnier
 //
 
 #include "Snake.hpp"
@@ -46,8 +46,6 @@ void Snake::getMapToGetMap(arcade::CommandType command, Snake *snake)
     			getMap->tile[caseToUpdate] = arcade::TileType::EMPTY;
     		else if (snake->getMap()->getCaseInfo(width, height) == Map::Info::BLOCK)
     			getMap->tile[caseToUpdate] = arcade::TileType::BLOCK;
-    		else if (snake->getMap()->getCaseInfo(width, height) == Map::Info::SNAKE)
-    			getMap->tile[caseToUpdate] = arcade::TileType::EMPTY;
     		else if (snake->getMap()->getCaseInfo(width, height) == Map::Info::POWERUP)
     			getMap->tile[caseToUpdate] = arcade::TileType::POWERUP;
         ++width;

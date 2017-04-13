@@ -5,7 +5,7 @@
 // Login   <person_m@epitech.eu>
 //
 // Started on  Tue Apr 11 17:18:54 2017 Melvin Personnier
-// Last update Wed Apr 12 16:32:59 2017 Melvin Personnier
+// Last update Thu Apr 13 19:55:56 2017 Melvin Personnier
 //
 
 #include "Snake.hpp"
@@ -23,12 +23,11 @@ Snake::Snake(int width, int height)
   for (size_t i = 0; i < 4; i++) {
     _whereAmI->position[i].x = _map->getWidth() / 2 - 2 + i;
     _whereAmI->position[i].y = _map->getHeight() / 2;
-    _map->setCaseInfo(_whereAmI->position[i].y, _whereAmI->position[i].x, Map::SNAKE);
   }
   _gameOver = false;
   _powerUp = false;
-  _map->setCaseInfo(3, 5, Map::POWERUP);
-  //_map->setPowerUp();
+  //_map->setCaseInfo(3, 5, Map::POWERUP);
+  _map->setPowerUp();
   _dir = Direction::UP;
 }
 
