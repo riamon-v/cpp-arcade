@@ -12,18 +12,26 @@
 #include "IDisplay.hpp"
 #include "LibManager.hpp"
 #include "InputManager.hpp"
+#include "Snake.hpp"
 
 void		main_loop(IDisplay *lib, LibManager *lman)
 {
   InputManager Iman(lman, lib, 1);
+  // Snake		snk(MAP_W, MAP_H);
 
+  // Iman._snk = snk;
   while (Iman.is_running)
     {
-      Iman.do_action(Iman._lib->getInputs());
       //Input gestion
+      Iman.do_action(Iman._lib->getInputs());
       //Game logic
+      //      Iman._snk->goPlay();
       //Display
+      //Iman._lib->display();
+      //usleep(500000);
     }
+  delete Iman._lib;
+  delete Iman._Lman;
 }
 
 int		main(int argc, char **argv)
@@ -46,7 +54,5 @@ int		main(int argc, char **argv)
     return ((std::cerr<< Lman->Error() << std::endl) && 1);
   lib = clone();
   main_loop(lib, Lman);
-  delete lib;
-  delete Lman;
   return (0);
 }

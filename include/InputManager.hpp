@@ -10,6 +10,7 @@
 #include <utility>
 #include "IDisplay.hpp"
 #include "LibManager.hpp"
+#include "Snake.hpp"
 
 class InputManager
 {
@@ -34,6 +35,7 @@ public:
   IDisplay *_lib;
   std::vector<std::string> _libs;
   int is_running;
+  Snake *_snk; //TODO temprary
 };
 
 #endif //INPUTMANAGER_HPP_

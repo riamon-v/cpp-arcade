@@ -25,7 +25,6 @@ Lapin::Lapin()
   _inputs[BKS_DOWN] = DOWN;
   _inputs[BKS_RETURN] = PLAY;
   _in = UNDEFINED;
-  std::cout << "Lapin" << std::endl;
   configure(WIN_W, WIN_H);
 }
 

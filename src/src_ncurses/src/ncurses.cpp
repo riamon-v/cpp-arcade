@@ -24,7 +24,6 @@ Ncurses::Ncurses()
   _inputs[KEY_UP] = UP;
   _inputs[KEY_DOWN] = DOWN;
   _inputs[10] = PLAY;
-  std::cout << "Ncurses" << std::endl;
   configure(WIN_W, WIN_H);
 }
 
@@ -71,7 +70,6 @@ Input Ncurses::getInputs() const
 
 void Ncurses::kill()
 {
-  //std::cerr << "Kill Ncurses" << std::endl;
   delwin(_win);
   endwin();
 }

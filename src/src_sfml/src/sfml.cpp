@@ -26,7 +26,6 @@ Sfml::Sfml()
   _inputs[sf::Keyboard::Up] = UP;
   _inputs[sf::Keyboard::Down] = DOWN;
   _inputs[sf::Keyboard::Return] = PLAY;
-  std::cout << "Sfml" << std::endl;
 }
 
 Sfml::~Sfml()

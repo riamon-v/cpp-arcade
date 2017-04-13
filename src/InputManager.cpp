@@ -15,6 +15,7 @@ InputManager::InputManager(LibManager *lman, IDisplay *lib, int run) : _Lman(lma
   DIR *dir;
   struct dirent *entry;
 
+  // _snk = new Snake(MAP_W, MAP_H);
   if (!(dir = opendir("./lib")))
     return ;
   while ((entry = readdir(dir)))
@@ -87,7 +88,7 @@ void InputManager::do_action(Input in)
   else if (in == MENU)
     menu();
   else if (in == EXIT)
-    exit(is_running);
+    my_exit();
   else if (in == RIGHT)
     goRight();
   else if (in == LEFT)
@@ -123,7 +124,9 @@ void InputManager::switch_lib(int mode)
     return ;
   if (static_cast<std::string>(lib_name) == _Lman->getLib())
     return ;
-  delete _lib;
+  if (InputManager::is_running)
+    delete _lib;
+  std::cout << "Switch to " << lib_name << std::endl;
   _Lman->Switch(dir + lib_name);
   clone = (func)dlsym(_Lman->getHandle(), "clone");
   _lib = clone();
@@ -153,21 +156,25 @@ void InputManager::my_exit()
 
 void InputManager::goRight()
 {
+  // _snk->setDir(Snake::Direction::RIGHT);
   std::cout << "Go Right" << std::endl;
 }
 
 void InputManager::goLeft()
 {
+  // _snk->setDir(Snake::Direction::LEFT);
   std::cout << "Go Left" << std::endl;
 }
 
 void InputManager::goUp()
 {
+  //_snk->setDir(Snake::Direction::UP);
   std::cout << "Go Up" << std::endl;
 }
 
 void InputManager::goDown()
 {
+  //  _snk->setDir(Snake::Direction::DOWN);
   std::cout << "Go Down" << std::endl;
 }
 
