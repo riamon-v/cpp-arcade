@@ -5,7 +5,7 @@
 // Login   <person_m@epitech.eu>
 //
 // Started on  Tue Apr 11 17:18:54 2017 Melvin Personnier
-// Last update Thu Apr 13 23:45:27 2017 Riamon Vincent
+// Last update Fri Apr 14 00:18:12 2017 Riamon Vincent
 //
 
 #include "Snake.hpp"
@@ -15,10 +15,10 @@ Snake::Snake(int width, int height)
   if (width < 8 || height < 8)
     throw MapToSmall("Map's width and height must be >= 7");
   int sizeOfStruct = sizeof(struct arcade::WhereAmI) +
-    sizeof(arcade::Position) * width * height;
-	_map = new Map(width, height);
+	      sizeof(arcade::Position) * width * height;
+  _map = new Map(width, height);
   _whereAmI = reinterpret_cast<struct arcade::WhereAmI *>
-         (new char[sizeOfStruct]);
+	      (new char[sizeOfStruct]);
   _whereAmI->lenght = 4;
   for (size_t i = 0; i < 4; i++) {
     _whereAmI->position[i].x = _map->getWidth() / 2 - 2 + i;
@@ -26,9 +26,11 @@ Snake::Snake(int width, int height)
   }
   _gameOver = false;
   _powerUp = false;
-  //_map->setCaseInfo(3, 5, Map::POWERUP);
   _map->setPowerUp();
   _dir = Direction::UP;
+  _screen.width = MAP_W;
+  _screen.height = MAP_H;
+  _speed = 80000;
 }
 
 Snake::~Snake()
@@ -215,6 +217,7 @@ void Snake::goPlay()
     this->goLeft();
   else if (_dir == Direction::RIGHT)
     this->goRight();
+  updateTiles();
 }
 
 int Snake::is_in_list(int x, int y) const
@@ -230,12 +233,11 @@ int Snake::is_in_list(int x, int y) const
   return (0);
 }
 
-const std::vector<TileInfo> &Snake::getTiles()// const
+void Snake::updateTiles()
 {
   int	i;
   int	x;
   int	y;
-  //  std::vector<TileInfo> _tiles;
   TileInfo tile;
   Pixel pixel;
 
@@ -265,7 +267,11 @@ const std::vector<TileInfo> &Snake::getTiles()// const
       x++;
       i++;
     }
-  return (_tiles);
+}
+
+std::vector<TileInfo> const &Snake::getTiles() const
+{
+  return _tiles;
 }
 
 struct_info Snake::runCommand(arcade::CommandType type)
@@ -285,13 +291,14 @@ struct_info Snake::runCommand(arcade::CommandType type)
   return (null);
 }
 
-const Screen &Snake::getScreen() //const
+Screen const &Snake::getScreen() const
 {
-  // Screen Screen;
-
-  _screen.width = MAP_W;
-  _screen.height = MAP_H;
   return (_screen);
+}
+
+int const &Snake::getSpeed() const
+{
+  return (_speed);
 }
 
 ILogic *cln::clone()

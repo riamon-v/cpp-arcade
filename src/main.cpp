@@ -5,7 +5,7 @@
 // Login   <riamon_v@epitech.net>
 //
 // Started on  Thu Apr  6 18:56:31 2017 Riamon Vincent
-// Last update Thu Apr 13 23:36:29 2017 Riamon Vincent
+// Last update Fri Apr 14 00:08:01 2017 Riamon Vincent
 //
 
 #include <unistd.h>
@@ -21,7 +21,7 @@ void		main_loop(IDisplay *lib, GLManager *lman, ILogic *game, GLManager *gman)
       //Input gestion
       Iman.do_action(Iman._lib->getInputs());
       //Game logic
-      usleep(80000);
+      usleep(Iman._game->getSpeed());
       Iman._game->runCommand(arcade::CommandType::PLAY);
       //Display
       Iman._lib->display(Iman._game->getTiles());

@@ -5,7 +5,7 @@
 // Login   <person_m@epitech.eu>
 //
 // Started on  Tue Apr 11 15:03:32 2017 Melvin Personnier
-// Last update Wed Apr 12 20:47:34 2017 Melvin Personnier
+// Last update Fri Apr 14 00:18:52 2017 Riamon Vincent
 //
 
 #ifndef __SNAKE_HPP__
@@ -25,19 +25,19 @@ public:
       LEFT = 4,
       RIGHT = 5,
     };
-  
+
 public:
   Snake(int width, int height);
   Snake(Snake const &);
   virtual ~Snake();
   Snake& operator=(Snake const &);
-  
+
   Map *getMap() const;
   arcade::WhereAmI *getWhereAmI() const;
   Direction getDir() const;
   void getWhereAmI(arcade::CommandType command, Snake *snake);
   void getMapToGetMap(arcade::CommandType command, Snake *snake);
-  
+
   void setDir(Direction _dir);
   void goUp();
   void goDown();
@@ -46,8 +46,10 @@ public:
   void goPlay();
   int is_in_list(int, int) const;
   struct_info runCommand(arcade::CommandType type);
-  const std::vector<TileInfo> &getTiles() ;//const;
-  const Screen &getScreen() ;//const;
+  void updateTiles();
+  std::vector<TileInfo> const  &getTiles() const;
+  Screen const  &getScreen() const;
+  int const &getSpeed() const;
 
 private:
   Map *_map;
@@ -57,6 +59,7 @@ private:
   Direction _dir;
   std::vector<TileInfo> _tiles;
   Screen _screen;
+  int _speed;
 };
 
 namespace cln

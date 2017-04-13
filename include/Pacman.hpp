@@ -5,7 +5,7 @@
 // Login   <person_m@epitech.eu>
 //
 // Started on  Wed Apr 12 22:11:13 2017 Melvin Personnier
-// Last update Thu Apr 13 20:52:04 2017 Riamon Vincent
+// Last update Fri Apr 14 00:18:35 2017 Riamon Vincent
 //
 
 #ifndef __PACMAN_HPP__
@@ -44,9 +44,11 @@ class Pacman : public ILogic
     void goLeft();
     void goRight();
     void goPlay();
+  void updateTiles();
   struct_info runCommand(arcade::CommandType type);
-  const std::vector<TileInfo> &getTiles() ;//const;
-  const Screen &getScreen() ;//const;
+  std::vector<TileInfo> const &getTiles() const;
+  Screen const &getScreen() const;
+  int const &getSpeed() const;
 
 private:
   Map *_map;
@@ -55,6 +57,7 @@ private:
   Direction _dir;
   std::vector<TileInfo> _tiles;
   Screen _screen;
+  int _speed;
 };
 
 namespace cln

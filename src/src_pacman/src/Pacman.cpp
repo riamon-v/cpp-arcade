@@ -5,7 +5,7 @@
 // Login   <person_m@epitech.eu>
 //
 // Started on  Thu Apr 13 09:49:51 2017 Melvin Personnier
-// Last update Thu Apr 13 23:42:15 2017 Riamon Vincent
+// Last update Fri Apr 14 00:17:46 2017 Riamon Vincent
 //
 
 #include "Pacman.hpp"
@@ -15,15 +15,18 @@ Pacman::Pacman(int width, int height)
   if (width < 27 || height < 31)
     throw MapToSmall("Map's width must be == 27 && Map's height == 31");
   int sizeOfStruct = sizeof(struct arcade::WhereAmI) +
-   sizeof(arcade::Position);
+	      sizeof(arcade::Position);
   _map = new Map(width, height);
   _whereAmI = reinterpret_cast<struct arcade::WhereAmI *>
-         (new char[sizeOfStruct]);
+	      (new char[sizeOfStruct]);
   _whereAmI->lenght = 1;
   _whereAmI->position[0].x = 13;
   _whereAmI->position[0].y = 23;
   _gameOver = false;
   _dir = Direction::LEFT;
+  _screen.width = MAP_W;
+  _screen.height = MAP_H;
+  _speed = 200000;
 }
 
 Pacman::~Pacman()
@@ -117,14 +120,14 @@ void Pacman::goPlay()
     this->goLeft();
   else if (_dir == Direction::RIGHT)
     this->goRight();
+  updateTiles();
 }
 
-const std::vector<TileInfo> &Pacman::getTiles()// const
+void Pacman::updateTiles()
 {
   int	i;
   int	x;
   int	y;
-  //  std::vector<TileInfo> _tiles;
   TileInfo tile;
   Pixel pixel;
 
@@ -154,7 +157,11 @@ const std::vector<TileInfo> &Pacman::getTiles()// const
       x++;
       i++;
     }
-  return (_tiles);
+}
+
+std::vector<TileInfo> const &Pacman::getTiles() const
+{
+  return _tiles;
 }
 
 struct_info Pacman::runCommand(arcade::CommandType type)
@@ -174,13 +181,14 @@ struct_info Pacman::runCommand(arcade::CommandType type)
   return (null);
 }
 
-const Screen &Pacman::getScreen() //const
+Screen const &Pacman::getScreen() const
 {
-  // Screen Screen;
-
-  _screen.width = MAP_W;
-  _screen.height = MAP_H;
   return (_screen);
+}
+
+int const &Pacman::getSpeed() const
+{
+  return (_speed);
 }
 
 ILogic *cln::clone()
