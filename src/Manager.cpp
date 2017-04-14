@@ -5,7 +5,7 @@
 // Login   <riamon_v@epitech.net>
 //
 // Started on  Thu Apr  6 18:54:40 2017 Riamon Vincent
-// Last update Fri Apr 14 11:58:44 2017 Riamon Vincent
+// Last update Fri Apr 14 18:04:13 2017 Riamon Vincent
 //
 
 #include "Manager.hpp"
@@ -81,30 +81,6 @@ void Manager::do_action(Input in)
 
   if (in != UNDEFINED)
     _fun[in]();
-  // if (in == PREV_LIB)
-  //   switch_lib(0);
-  // else if (in == NEXT_LIB)
-  //   switch_lib(1);
-  // else if (in == PREV_GAME)
-  //   switch_game(0);
-  // else if (in == NEXT_GAME)
-  //   switch_game(1);
-  // else if (in == RESTART)
-  //   restart();
-  // else if (in == MENU)
-  //   menu();
-  // else if (in == EXIT)
-  //   my_exit();
-  // else if (in == RIGHT)
-  //   goRight();
-  // else if (in == LEFT)
-  //   goLeft();
-  // else if (in == UP)
-  //   goUp();
-  // else if (in == DOWN)
-  //   goDown();
-  // else if (in == PLAY)
-  //   launch_game();
 }
 
 std::string Manager::name_next_lib(int mode)
@@ -274,10 +250,8 @@ gameLib Manager::menu()
   {
     Input inp;
     if ((inp = _lib->getInputs()) != Input::UNDEFINED)
-    {
       _runCmdMenu(inp, s, run, ret);
-      _lib->displayMenu(s);
-    }
+    _lib->displayMenu(s);
   }
  return (ret);
 }

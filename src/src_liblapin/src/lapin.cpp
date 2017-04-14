@@ -5,7 +5,7 @@
 // Login   <riamon_v@epitech.net>
 //
 // Started on  Mon Apr 10 20:52:22 2017 Riamon Vincent
-// Last update Fri Apr 14 16:49:21 2017 Riamon Vincent
+// Last update Fri Apr 14 18:01:52 2017 Riamon Vincent
 //
 
 #include "Llapin.hpp"
@@ -64,10 +64,23 @@ void Lapin::display(std::vector<TileInfo> const &_tiles) const
 
 void Lapin::displayMenu(const t_info_menu &s) const
 {
-  color_full(_pix, BLACK);
-  bunny_blit(&_win->buffer, &_pix->clipable, 0);
-  bunny_display(_win);
+  t_bunny_picture *img[2];
+  t_bunny_position pos[2];
+
   (void)s;
+  pos[0].x = 50;
+  pos[0].y = 50;
+  pos[1].x = 330;
+  pos[1].y = 50;
+  color_full(_pix, BLACK);
+  img[0] = bunny_load_picture("src/src_liblapin/src/cadre-Scheck.png");
+  img[1] = bunny_load_picture("src/src_liblapin/src/cadre-lib.png");
+  bunny_blit(&_win->buffer, &_pix->clipable, 0);
+  bunny_blit(&_win->buffer, img[0], &pos[0]);
+  bunny_blit(&_win->buffer, img[1], &pos[1]);
+  bunny_display(_win);
+  bunny_delete_clipable(img[0]);
+  bunny_delete_clipable(img[1]);
   // (void)data;
 }
 
