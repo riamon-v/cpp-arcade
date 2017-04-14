@@ -5,7 +5,7 @@
 // Login   <person_m@epitech.eu>
 //
 // Started on  Thu Apr 13 09:49:51 2017 Melvin Personnier
-// Last update Fri Apr 14 13:13:55 2017 Melvin Personnier
+// Last update Fri Apr 14 17:14:03 2017 Melvin Personnier
 //
 
 #include "Pacman.hpp"
@@ -63,8 +63,9 @@ void Pacman::goUp()
       this->getWhereAmI()->position[0].y--;
       this->getMap()->setCaseInfo(this->getWhereAmI()->position[0].x,
           this->getWhereAmI()->position[0].y, Map::Info::EMPTY);
-      _dir = Direction::UP;
+      _lastDir = Direction::UP;
     }
+    else _dir = _lastDir;
 }
 
 void Pacman::goDown()
@@ -77,8 +78,9 @@ void Pacman::goDown()
       this->getWhereAmI()->position[0].y++;
       this->getMap()->setCaseInfo(this->getWhereAmI()->position[0].x,
           this->getWhereAmI()->position[0].y, Map::Info::EMPTY);
-      _dir = Direction::DOWN;
+      _lastDir = Direction::DOWN;
     }
+    else _dir = _lastDir;
 }
 
 void Pacman::goLeft()
@@ -91,8 +93,9 @@ void Pacman::goLeft()
       this->getWhereAmI()->position[0].x--;
       this->getMap()->setCaseInfo(this->getWhereAmI()->position[0].x,
           this->getWhereAmI()->position[0].y, Map::Info::EMPTY);
-      _dir = Direction::LEFT;
+      _lastDir = Direction::LEFT;
     }
+    else _dir = _lastDir;
 }
 
 void Pacman::goRight()
@@ -105,8 +108,9 @@ void Pacman::goRight()
       this->getWhereAmI()->position[0].x++;
       this->getMap()->setCaseInfo(this->getWhereAmI()->position[0].x,
           this->getWhereAmI()->position[0].y, Map::Info::EMPTY);
-      _dir = Direction::RIGHT;
+      _lastDir = Direction::RIGHT;
     }
+    else _dir = _lastDir;
 }
 
 void Pacman::goPlay()
