@@ -40,7 +40,6 @@ void Ncurses::draw_case(unsigned int x, unsigned int y,
 
   init_pair(c, c, c);
   wattron(_win, COLOR_PAIR(c));
-  getmaxyx(stdscr, _y, _x);
   i = 0;
   while (i < (WIN_H / MAP_H) / 14)
   {

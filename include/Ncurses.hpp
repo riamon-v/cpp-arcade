@@ -32,7 +32,7 @@ private:
   int _y;
   int _x;
   WINDOW *_win;
-  std::vector<uint32_t> _colors;
+  mutable std::vector<uint32_t> _colors;
   std::map<int, Input> _inputs;
 };
 
