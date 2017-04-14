@@ -5,7 +5,7 @@
 // Login   <riamon_v@epitech.net>
 //
 // Started on  Mon Apr 10 21:05:22 2017 Riamon Vincent
-// Last update Fri Apr 14 16:44:10 2017 Riamon Vincent
+// Last update Fri Apr 14 16:57:27 2017 Melvin Personnier
 //
 
 #ifndef __IDISPLAY_HPP__
@@ -18,7 +18,7 @@
 #define WIN_H 620
 #define WIN_W 560
 #define MAP_H 31
-#define MAP_W 28
+#define MAP_W 27
 
 enum Input {
   UNDEFINED = 0,

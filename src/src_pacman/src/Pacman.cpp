@@ -5,15 +5,14 @@
 // Login   <person_m@epitech.eu>
 //
 // Started on  Thu Apr 13 09:49:51 2017 Melvin Personnier
-// Last update Fri Apr 14 11:28:23 2017 Riamon Vincent
+// Last update Fri Apr 14 13:13:55 2017 Melvin Personnier
 //
 
 #include "Pacman.hpp"
 
 Pacman::Pacman(int width, int height)
 {
-  if (width < 27 || height < 31)
-    throw MapToSmall("Map's width must be == 27 && Map's height == 31");
+
   int sizeOfStruct = sizeof(struct arcade::WhereAmI) +
 	      sizeof(arcade::Position);
   _map = new Map(width, height);
