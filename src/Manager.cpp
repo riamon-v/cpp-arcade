@@ -5,7 +5,7 @@
 // Login   <riamon_v@epitech.net>
 //
 // Started on  Thu Apr  6 18:54:40 2017 Riamon Vincent
-// Last update Thu Apr 13 18:57:25 2017 Riamon Vincent
+// Last update Fri Apr 14 11:52:10 2017 Riamon Vincent
 //
 
 #include "Manager.hpp"
@@ -171,6 +171,12 @@ void Manager::switch_game(int mode)
 
 void Manager::restart()
 {
+  func_logic clone;
+
+  delete _game;
+  _Gman->Switch(_Gman->getName());
+  clone  = (func_logic)dlsym(_Gman->getHandle(), "clone");
+  _game = clone();
   std::cout << "Restart Game" << std::endl;
 }
 

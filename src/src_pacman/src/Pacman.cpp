@@ -5,7 +5,7 @@
 // Login   <person_m@epitech.eu>
 //
 // Started on  Thu Apr 13 09:49:51 2017 Melvin Personnier
-// Last update Fri Apr 14 00:17:46 2017 Riamon Vincent
+// Last update Fri Apr 14 11:28:23 2017 Riamon Vincent
 //
 
 #include "Pacman.hpp"
@@ -26,7 +26,7 @@ Pacman::Pacman(int width, int height)
   _dir = Direction::LEFT;
   _screen.width = MAP_W;
   _screen.height = MAP_H;
-  _speed = 200000;
+  _speed = 150000;
 }
 
 Pacman::~Pacman()
