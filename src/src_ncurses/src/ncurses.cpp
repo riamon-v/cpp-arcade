@@ -38,16 +38,16 @@ void Ncurses::draw_case(unsigned int x, unsigned int y,
   int    i;
   int    j;
 
-  start_color();
   init_pair(c, c, c);
   wattron(_win, COLOR_PAIR(c));
+  getmaxyx(stdscr, _y, _x);
   i = 0;
-  while (i < (WIN_H / MAP_H) / 4)
+  while (i < (WIN_H / MAP_H) / 14)
   {
     j = 0;
-    while (j < (WIN_W / MAP_W) / 8)
+    while (j < (WIN_W / MAP_W) / 7)
     {
-      mvwprintw(_win, x, y, "%c", ' ');
+      mvwprintw(_win, y, x , "%c", ' ');
       x = x + 1;
       j = j + 1;
     }
@@ -60,12 +60,8 @@ void Ncurses::draw_case(unsigned int x, unsigned int y,
 
 int Ncurses::configure(unsigned int width, unsigned int height)
 {
-  (void)width;
-  (void)height;
   initscr();
-  getmaxyx(stdscr, _y, _x);
-  _win = newwin(_y - 1, _x - 1, 1, 1);
-  box(_win, 0, 0);
+  _win = newwin(height, width, 1, 1);
   keypad(_win, true);
   curs_set(0);
   timeout(0);
@@ -80,20 +76,28 @@ void Ncurses::display(std::vector<TileInfo> const &_tiles)// const
 
   x = 0;
   y = 0;
+  start_color();
   for (int i = 0; i < MAP_W * MAP_H; i++)
     {
       if (i != 0 && !(i % MAP_W))
-	{
-	  x = 0;
-	  y += WIN_H / MAP_H;
-	}
-      init_color(COLOR_BLACK, _tiles[i].color.rgba[0],
-		 _tiles[i].color.rgba[1],
-		 _tiles[i].color.rgba[2]);
-      draw_case(x, y, COLOR_BLACK);
-      x += WIN_W / MAP_W;
+	     {
+	        x = 0;
+	        y += (WIN_H / MAP_H) / 14;
+	     }
+    if (find(_colors.begin(), _colors.end(), _tiles[i].color.hexacode) ==
+          _colors.end())
+      {
+        init_color(_colors.size() + 1, _tiles[i].color.rgba[0],
+                  _tiles[i].color.rgba[1], _tiles[i].color.rgba[2]);
+        _colors.push_back(_tiles[i].color.hexacode);
+      }
+    unsigned int ic = 0;
+    while (ic < _colors.size() && _colors[ic] != _tiles[i].color.hexacode)
+      ic++;
+    draw_case(x, y, ic >= _colors.size() ? _colors.size() : ic + 1);
+    x += (WIN_W / MAP_W) / 7;
     }
-
+  wrefresh(_win);
 }
 
 void Ncurses::displayMenu(void *data) const

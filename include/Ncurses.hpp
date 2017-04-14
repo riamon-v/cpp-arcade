@@ -13,6 +13,7 @@
 
 #include <ncurses.h>
 #include <map>
+#include <algorithm>
 #include "IDisplay.hpp"
 
 class Ncurses : public IDisplay
@@ -31,6 +32,7 @@ private:
   int _y;
   int _x;
   WINDOW *_win;
+  std::vector<uint32_t> _colors;
   std::map<int, Input> _inputs;
 };
 
