@@ -99,9 +99,9 @@ void Ncurses::display(std::vector<TileInfo> const &_tiles) const
   wrefresh(_win);
 }
 
-void Ncurses::displayMenu(void *data) const
+void Ncurses::displayMenu(const t_info_menu &s) const
 {
-  (void)data;
+  (void)s;
 }
 
 Input Ncurses::getInputs() const

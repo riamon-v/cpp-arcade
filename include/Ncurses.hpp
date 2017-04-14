@@ -23,7 +23,7 @@ public:
   virtual ~Ncurses();
   int configure(unsigned int width, unsigned int height);
   void display(std::vector<TileInfo> const &_tiles) const;
-  void displayMenu(void *data) const;
+  void displayMenu(const t_info_menu &) const;
   Input getInputs() const;
   void kill();
   void draw_case(unsigned int, unsigned int, const unsigned int) const;

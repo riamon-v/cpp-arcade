@@ -276,7 +276,7 @@ gameLib Manager::menu()
     if ((inp = _lib->getInputs()) != Input::UNDEFINED)
     {
       _runCmdMenu(inp, s, run, ret);
-      _lib->displayMenu(&s);
+      _lib->displayMenu(s);
     }
   }
  return (ret);

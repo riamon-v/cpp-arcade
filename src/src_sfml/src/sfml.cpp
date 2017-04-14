@@ -77,6 +77,7 @@ void Sfml::displayMenu(const t_info_menu &s) const
 {
   // sf::RectangleShape btn1(sf::Vector2f((WIN_W / MAP_W), (WIN_H / MAP_H)));
   // sf::RectangleShape btn2(sf::Vector2f((WIN_W / MAP_W), (WIN_H / MAP_H)));
+  (void)s;
   _window->display();
 }
 

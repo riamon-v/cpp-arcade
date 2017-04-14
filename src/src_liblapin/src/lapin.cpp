@@ -1,9 +1,9 @@
 //
 // lapin.cpp for lapin in /home/riamon_v/rendu/CPP/cpp_arcade/src/src_liblapin/src
-// 
+//
 // Made by Riamon Vincent
 // Login   <riamon_v@epitech.net>
-// 
+//
 // Started on  Mon Apr 10 20:52:22 2017 Riamon Vincent
 // Last update Fri Apr 14 16:49:21 2017 Riamon Vincent
 //
@@ -62,11 +62,12 @@ void Lapin::display(std::vector<TileInfo> const &_tiles) const
   bunny_display(_win);
 }
 
-void Lapin::displayMenu(void *data) const
+void Lapin::displayMenu(const t_info_menu &s) const
 {
   color_full(_pix, BLACK);
   bunny_blit(&_win->buffer, &_pix->clipable, 0);
   bunny_display(_win);
+  (void)s;
   // (void)data;
 }
 

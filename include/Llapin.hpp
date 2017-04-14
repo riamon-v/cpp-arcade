@@ -1,9 +1,9 @@
 //
 // Llapin.hpp for Llapin in /home/riamon_v/rendu/CPP/cpp_arcade/include
-// 
+//
 // Made by Riamon Vincent
 // Login   <riamon_v@epitech.net>
-// 
+//
 // Started on  Mon Apr 10 18:55:43 2017 Riamon Vincent
 // Last update Fri Apr 14 16:49:26 2017 Riamon Vincent
 //
@@ -25,7 +25,7 @@ public:
   virtual ~Lapin();
   int configure(unsigned int width, unsigned int height);
   void display(std::vector<TileInfo> const &_tiles) const;
-  void displayMenu(void *data) const;
+  void displayMenu(const t_info_menu &) const;
   Input getInputs() const;
   void kill();
 
