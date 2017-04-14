@@ -5,7 +5,7 @@
 // Login   <riamon_v@epitech.net>
 //
 // Started on  Thu Apr  6 18:54:40 2017 Riamon Vincent
-// Last update Fri Apr 14 11:52:10 2017 Riamon Vincent
+// Last update Fri Apr 14 11:58:44 2017 Riamon Vincent
 //
 
 #include "Manager.hpp"
@@ -55,7 +55,7 @@ void Manager::do_action(Input in)
     this->switch_game(1);
   };
   _fun[RESTART] = [this] () {
-    this->restart(); //TODO à voir
+    this->restart();
   };
   _fun[MENU] = [this] () {
     this->menu(); //TODO à voir

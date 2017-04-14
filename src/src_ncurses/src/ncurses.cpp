@@ -5,7 +5,7 @@
 // Login   <riamon_v@epitech.net>
 //
 // Started on  Mon Apr 10 20:58:59 2017 Riamon Vincent
-// Last update Thu Apr 13 19:01:30 2017 Riamon Vincent
+// Last update Fri Apr 14 16:47:31 2017 Riamon Vincent
 //
 
 #include "Ncurses.hpp"
@@ -33,7 +33,7 @@ Ncurses::~Ncurses()
 }
 
 void Ncurses::draw_case(unsigned int x, unsigned int y,
-                       const unsigned int c)
+                       const unsigned int c) const
 {
   int    i;
   int    j;
@@ -73,7 +73,7 @@ int Ncurses::configure(unsigned int width, unsigned int height)
   return (0);
 }
 
-void Ncurses::display(std::vector<TileInfo> const &_tiles)// const
+void Ncurses::display(std::vector<TileInfo> const &_tiles) const
 {
   unsigned int x;
   unsigned int y;
