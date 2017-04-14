@@ -56,7 +56,7 @@ public:
   virtual int configure(unsigned int width, unsigned int height) = 0;
   virtual Input getInputs() const = 0;
   virtual void display(std::vector<TileInfo> const &_tiles) const = 0;
-  virtual void displayMenu(void *data) const = 0;
+  virtual void displayMenu(const t_info_menu &) const = 0;
   virtual void kill() = 0;
 };
 
