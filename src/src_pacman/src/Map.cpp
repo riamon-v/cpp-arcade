@@ -5,7 +5,7 @@
 // Login   <person_m@epitech.eu>
 //
 // Started on  Thu Apr 13 10:06:09 2017 Melvin Personnier
-// Last update Fri Apr 14 17:06:23 2017 Melvin Personnier
+// Last update Fri Apr 14 17:09:25 2017 Melvin Personnier
 //
 
 #include "Map.hpp"
@@ -54,7 +54,7 @@ void Map::init()
   generateIsland(21, 6, 4, 2); // 13a
   generateIsland(7, 15, 2, 5); // 13
   generateIsland(18, 15, 2, 5); // 14
-  generateIsland(10, 18, 7, 2); // 15
+  generateIsland(10, 19, 7, 1); // 15
   generateIsland(13, 20, 1, 3); // 16
   generateIsland(2, 21, 4, 2); // 17
   generateIsland(4, 23, 2, 3); // 18
@@ -75,9 +75,9 @@ void Map::init()
   generateIsland(21, 9, 5, 5); // hd
   generateIsland(21, 15, 5, 5); // bd
   generateIsland(10, 12, 7, 1); // h
-  generateIsland(10, 16, 7, 1); // b
-  generateIsland(10, 12, 1, 5); // g
-  generateIsland(16, 12, 1, 5); // d
+  generateIsland(10, 17, 7, 1); // b
+  generateIsland(10, 12, 1, 6); // g
+  generateIsland(16, 12, 1, 6); // d
   _map[12][13] = Map::DOOR;
 }
 
