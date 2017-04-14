@@ -5,7 +5,7 @@
 // Login   <riamon_v@epitech.net>
 //
 // Started on  Mon Apr 10 21:05:22 2017 Riamon Vincent
-// Last update Fri Apr 14 16:57:27 2017 Melvin Personnier
+// Last update Fri Apr 14 17:07:41 2017 Riamon Vincent
 //
 
 #ifndef __IDISPLAY_HPP__
@@ -16,7 +16,7 @@
 #include "ILogic.hpp"
 
 #define WIN_H 620
-#define WIN_W 560
+#define WIN_W 540
 #define MAP_H 31
 #define MAP_W 27
 

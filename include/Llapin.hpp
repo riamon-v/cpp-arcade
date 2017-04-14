@@ -5,7 +5,7 @@
 // Login   <riamon_v@epitech.net>
 // 
 // Started on  Mon Apr 10 18:55:43 2017 Riamon Vincent
-// Last update Fri Apr 14 16:49:26 2017 Riamon Vincent
+// Last update Fri Apr 14 17:05:01 2017 Riamon Vincent
 //
 
 #ifndef LLAPIN_HPP_
