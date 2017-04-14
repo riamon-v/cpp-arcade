@@ -5,7 +5,7 @@
 // Login   <riamon_v@epitech.net>
 // 
 // Started on  Mon Apr 10 20:52:22 2017 Riamon Vincent
-// Last update Fri Apr 14 00:40:30 2017 Riamon Vincent
+// Last update Fri Apr 14 16:49:21 2017 Riamon Vincent
 //
 
 #include "Llapin.hpp"
@@ -42,7 +42,7 @@ int Lapin::configure(unsigned int width, unsigned int height)
   return (0);
 }
 
-void Lapin::display(std::vector<TileInfo> const &_tiles)// const
+void Lapin::display(std::vector<TileInfo> const &_tiles) const
 {
   t_bunny_position pos = {.x = 0, .y = 0};
   t_color col;
@@ -64,7 +64,10 @@ void Lapin::display(std::vector<TileInfo> const &_tiles)// const
 
 void Lapin::displayMenu(void *data) const
 {
-  (void)data;
+  color_full(_pix, BLACK);
+  bunny_blit(&_win->buffer, &_pix->clipable, 0);
+  bunny_display(_win);
+  // (void)data;
 }
 
 t_bunny_response Lapin::pseudo_events(t_bunny_event_state st,
@@ -97,24 +100,24 @@ void Lapin::kill()
   bunny_stop(_win);
 }
 
-void		Lapin::tekpixel(t_bunny_position *pos, unsigned int col)
+void		Lapin::tekpixel(t_bunny_position *pos, unsigned int col) const
 {
   ((unsigned int *)_pix->pixels)[(_pix->clipable.clip_width * pos->y)
 				+ pos->x] = col;
 }
 
-void		Lapin::color_full(unsigned int col)
+void		Lapin::color_full(t_bunny_pixelarray *pix, unsigned int col) const
 {
   unsigned int	*pixels;
   int		i;
 
   i = -1;
-  pixels = (unsigned int *)_pix->pixels;
-  while (++i < _pix->clipable.buffer.width * _pix->clipable.buffer.height)
+  pixels = (unsigned int *)pix->pixels;
+  while (++i < pix->clipable.buffer.width * pix->clipable.buffer.height)
     pixels[i] = col;
 }
 
-void		Lapin::draw_case(t_bunny_position *pos, t_color *col)
+void		Lapin::draw_case(t_bunny_position *pos, t_color *col) const
 {
   int		i;
   int		j;

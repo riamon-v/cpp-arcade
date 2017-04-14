@@ -5,7 +5,7 @@
 // Login   <riamon_v@epitech.net>
 //
 // Started on  Thu Apr  6 18:56:31 2017 Riamon Vincent
-// Last update Fri Apr 14 00:28:37 2017 Riamon Vincent
+// Last update Fri Apr 14 16:21:32 2017 Riamon Vincent
 //
 
 #include <unistd.h>
@@ -19,12 +19,17 @@ void		main_loop(IDisplay *lib, GLManager *lman, ILogic *game, GLManager *gman)
   while (Iman.is_running)
     {
       //Input gestion
-      Iman.do_action(Iman._lib->getInputs());
-      //Game logic
-      usleep(Iman._game->getSpeed());
-      Iman._game->runCommand(arcade::CommandType::PLAY);
-      //Display
-      Iman._lib->display(Iman._game->getTiles());
+      try {
+	Iman.do_action(Iman._lib->getInputs());
+	//Game logic
+	usleep(Iman._game->getSpeed());
+	Iman._game->runCommand(arcade::CommandType::PLAY);
+	//Display
+	Iman._lib->display(Iman._game->getTiles());
+      } catch (GameOver const &err) {
+	std::cout << err.what() << std::endl;
+	Iman.is_running = 0;
+      }
     }
   delete Iman._lib;
   delete Iman._Lman;

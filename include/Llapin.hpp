@@ -5,7 +5,7 @@
 // Login   <riamon_v@epitech.net>
 // 
 // Started on  Mon Apr 10 18:55:43 2017 Riamon Vincent
-// Last update Tue Apr 11 19:15:53 2017 Riamon Vincent
+// Last update Fri Apr 14 16:49:26 2017 Riamon Vincent
 //
 
 #ifndef LLAPIN_HPP_
@@ -24,7 +24,7 @@ public:
   Lapin();
   virtual ~Lapin();
   int configure(unsigned int width, unsigned int height);
-  void display(std::vector<TileInfo> const &_tiles) ;//const;
+  void display(std::vector<TileInfo> const &_tiles) const;
   void displayMenu(void *data) const;
   Input getInputs() const;
   void kill();
@@ -35,13 +35,13 @@ public:
   static t_bunny_response pseudo_loop(void *ptr);
 
 public:
-  void tekpixel(t_bunny_position *pos, unsigned int col);
-  void color_full(unsigned int col);
-  void draw_case(t_bunny_position *pos, t_color *col);
+  void tekpixel(t_bunny_position *pos, unsigned int col) const;
+  void color_full(t_bunny_pixelarray *pix, unsigned int col) const;
+  void draw_case(t_bunny_position *pos, t_color *col) const;
 
 private:
-  t_bunny_window *_win;
-  t_bunny_pixelarray *_pix;
+  mutable t_bunny_window *_win;
+  mutable t_bunny_pixelarray *_pix;
 };
 
 namespace cln

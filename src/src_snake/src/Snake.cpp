@@ -5,7 +5,7 @@
 // Login   <person_m@epitech.eu>
 //
 // Started on  Tue Apr 11 17:18:54 2017 Melvin Personnier
-// Last update Fri Apr 14 00:23:28 2017 Riamon Vincent
+// Last update Fri Apr 14 13:07:33 2017 Riamon Vincent
 //
 
 #include "Snake.hpp"
@@ -64,12 +64,14 @@ void Snake::goUp()
   int lenght = this->getWhereAmI()->lenght;
   if (_dir == Direction::DOWN)
     return ;
-  if (this->getMap()->getCaseInfo(this->getWhereAmI()->position[0].x,
+  if ((this->getMap()->getCaseInfo(this->getWhereAmI()->position[0].x,
 				  this->getWhereAmI()->position[0].y - 1) != Map::Info::EMPTY &&
       this->getMap()->getCaseInfo(this->getWhereAmI()->position[0].x,
-				  this->getWhereAmI()->position[0].y - 1)!= Map::Info::POWERUP)
+				  this->getWhereAmI()->position[0].y - 1) != Map::Info::POWERUP) ||
+          this->is_in_list(this->getWhereAmI()->position[0].x,
+        				  this->getWhereAmI()->position[0].y - 1))
     {
-      _gameOver = true;
+      throw GameOver("GameOver");
     }
   else {
     if (this->getMap()->getCaseInfo(this->getWhereAmI()->position[0].x,
@@ -101,12 +103,14 @@ void Snake::goDown()
   int lenght = this->getWhereAmI()->lenght;
   if (_dir == Direction::UP)
     return ;
-  if (this->getMap()->getCaseInfo(this->getWhereAmI()->position[0].x,
+  if ((this->getMap()->getCaseInfo(this->getWhereAmI()->position[0].x,
 				  this->getWhereAmI()->position[0].y + 1)!= Map::Info::EMPTY  &&
       this->getMap()->getCaseInfo(this->getWhereAmI()->position[0].x,
-				  this->getWhereAmI()->position[0].y + 1)!= Map::Info::POWERUP)
+				  this->getWhereAmI()->position[0].y + 1)!= Map::Info::POWERUP) ||
+          this->is_in_list(this->getWhereAmI()->position[0].x,
+        				  this->getWhereAmI()->position[0].y + 1))
     {
-      _gameOver = true;
+      throw GameOver("GameOver");
     }
   else {
     if (this->getMap()->getCaseInfo(this->getWhereAmI()->position[0].x,
@@ -138,12 +142,14 @@ void Snake::goLeft()
   int lenght = this->getWhereAmI()->lenght;
   if (_dir == Direction::RIGHT)
     return ;
-  if (this->getMap()->getCaseInfo(this->getWhereAmI()->position[0].x - 1,
+  if ((this->getMap()->getCaseInfo(this->getWhereAmI()->position[0].x - 1,
 				  this->getWhereAmI()->position[0].y) != Map::Info::EMPTY  &&
       this->getMap()->getCaseInfo(this->getWhereAmI()->position[0].x - 1,
-				  this->getWhereAmI()->position[0].y) != Map::Info::POWERUP)
+				  this->getWhereAmI()->position[0].y) != Map::Info::POWERUP) ||
+          this->is_in_list(this->getWhereAmI()->position[0].x - 1,
+        				  this->getWhereAmI()->position[0].y))
     {
-      _gameOver = true;
+      throw GameOver("GameOver");
     }
   else {
     if (this->getMap()->getCaseInfo(this->getWhereAmI()->position[0].x - 1,
@@ -175,12 +181,14 @@ void Snake::goRight()
   int lenght = this->getWhereAmI()->lenght;
   if (_dir == Direction::LEFT)
     return ;
-  if (this->getMap()->getCaseInfo(this->getWhereAmI()->position[0].x + 1,
+  if ((this->getMap()->getCaseInfo(this->getWhereAmI()->position[0].x + 1,
 				  this->getWhereAmI()->position[0].y) != Map::Info::EMPTY &&
       this->getMap()->getCaseInfo(this->getWhereAmI()->position[0].x + 1,
-				  this->getWhereAmI()->position[0].y) != Map::Info::POWERUP)
+				  this->getWhereAmI()->position[0].y) != Map::Info::POWERUP) ||
+          this->is_in_list(this->getWhereAmI()->position[0].x + 1,
+        				  this->getWhereAmI()->position[0].y))
     {
-      _gameOver = true;
+      throw GameOver("GameOver");
     }
   else {
     if (this->getMap()->getCaseInfo(this->getWhereAmI()->position[0].x + 1,

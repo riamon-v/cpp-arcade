@@ -5,7 +5,7 @@
 // Login   <riamon_v@epitech.net>
 //
 // Started on  Mon Apr 10 21:02:03 2017 Riamon Vincent
-// Last update Fri Apr 14 00:40:12 2017 Riamon Vincent
+// Last update Fri Apr 14 16:46:58 2017 Riamon Vincent
 //
 
 #include "Sfml.hpp"
@@ -35,7 +35,7 @@ Sfml::~Sfml()
 }
 
 void Sfml::draw_case(const unsigned int x, const unsigned int y,
-                    const sf::Color &color)
+                    const sf::Color &color) const
 {
   sf::RectangleShape rectangle(sf::Vector2f((WIN_W / MAP_W), (WIN_H / MAP_H)));
   rectangle.setPosition(sf::Vector2f(x, y));
@@ -50,7 +50,7 @@ int Sfml::configure(unsigned int width, unsigned int height)
   return (0);
 }
 
-void Sfml::display(std::vector<TileInfo> const &_tiles)// const
+void Sfml::display(std::vector<TileInfo> const &_tiles) const
 {
   sf::Color col;
   unsigned int x;

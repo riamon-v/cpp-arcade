@@ -5,7 +5,7 @@
 // Login   <riamon_v@epitech.net>
 //
 // Started on  Mon Apr 10 20:56:56 2017 Riamon Vincent
-// Last update Tue Apr 11 20:58:21 2017 Riamon Vincent
+// Last update Fri Apr 14 16:48:24 2017 Riamon Vincent
 //
 
 #ifndef NCURSES_HPP_
@@ -22,11 +22,11 @@ public:
   Ncurses();
   virtual ~Ncurses();
   int configure(unsigned int width, unsigned int height);
-  void display(std::vector<TileInfo> const &_tiles) ;//const;
+  void display(std::vector<TileInfo> const &_tiles) const;
   void displayMenu(void *data) const;
   Input getInputs() const;
   void kill();
-  void draw_case(unsigned int, unsigned int, const unsigned int);
+  void draw_case(unsigned int, unsigned int, const unsigned int) const;
 
 private:
   int _y;
