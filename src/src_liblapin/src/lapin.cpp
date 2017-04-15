@@ -5,7 +5,7 @@
 // Login   <riamon_v@epitech.net>
 //
 // Started on  Mon Apr 10 20:52:22 2017 Riamon Vincent
-// Last update Fri Apr 14 18:01:52 2017 Riamon Vincent
+// Last update Fri Apr 14 23:25:54 2017 Riamon Vincent
 //
 
 #include "Llapin.hpp"
@@ -64,7 +64,8 @@ void Lapin::display(std::vector<TileInfo> const &_tiles) const
 
 void Lapin::displayMenu(const t_info_menu &s) const
 {
-  t_bunny_picture *img[2];
+  t_bunny_picture *img_games[3];
+  t_bunny_picture *img_libs[4];
   t_bunny_position pos[2];
 
   (void)s;
@@ -73,15 +74,31 @@ void Lapin::displayMenu(const t_info_menu &s) const
   pos[1].x = 330;
   pos[1].y = 50;
   color_full(_pix, BLACK);
-  img[0] = bunny_load_picture("src/src_liblapin/src/cadre-Scheck.png");
-  img[1] = bunny_load_picture("src/src_liblapin/src/cadre-lib.png");
+  img_games[0] = bunny_load_picture("src/src_liblapin/src/cadre-jeux.png");
+  img_games[1] = bunny_load_picture("src/src_liblapin/src/cadre-Scheck.png");
+  img_games[2] = bunny_load_picture("src/src_liblapin/src/cadre-Pcheck.png");
+  img_libs[0] = bunny_load_picture("src/src_liblapin/src/cadre-lib.png");
+  img_libs[1] = bunny_load_picture("src/src_liblapin/src/cadre-Lapincheck.png");
+  img_libs[2] = bunny_load_picture("src/src_liblapin/src/cadre-SFMLcheck.png");
+  img_libs[3] = bunny_load_picture("src/src_liblapin/src/cadre-Ncursescheck.png");
   bunny_blit(&_win->buffer, &_pix->clipable, 0);
-  bunny_blit(&_win->buffer, img[0], &pos[0]);
-  bunny_blit(&_win->buffer, img[1], &pos[1]);
+  bunny_blit(&_win->buffer, img_games[0], &pos[0]);
+  bunny_blit(&_win->buffer, img_libs[0], &pos[1]);
   bunny_display(_win);
-  bunny_delete_clipable(img[0]);
-  bunny_delete_clipable(img[1]);
-  // (void)data;
+  for (unsigned int i = 0; i < s.games.size(); i++)
+    {
+      std::cout << "Value: " << s.games[i].value << "\nChecked: " << s.games[i].checked << "\nPointed: " << s.games[i].pointed << std::endl;
+    }
+  for (unsigned int i = 0; i < s.graphics.size(); i++)
+    {
+      std::cout << "Value: " << s.graphics[i].value << "\nChecked: " << s.graphics[i].checked << "\nPointed: " << s.graphics[i].pointed << std::endl;
+    }
+  for (int i = 0; i < 4; i++)
+    {
+      if (i < 3)
+	bunny_delete_clipable(img_games[i]);
+      bunny_delete_clipable(img_libs[i]);
+    }
 }
 
 t_bunny_response Lapin::pseudo_events(t_bunny_event_state st,
