@@ -5,7 +5,7 @@
 // Login   <person_m@epitech.eu>
 //
 // Started on  Thu Apr 13 09:49:51 2017 Melvin Personnier
-// Last update Sun Apr 16 02:21:16 2017 Melvin Personnier
+// Last update Sun Apr 16 17:22:32 2017 Melvin Personnier
 //
 
 #include "Pacman.hpp"
@@ -65,8 +65,14 @@ void Pacman::setDir(Direction dir)
 void Pacman::goUp()
 {
   if (this->isInList(this->getWhereAmI()->position[0].x,
-          this->getWhereAmI()->position[0].y - 1))
+          this->getWhereAmI()->position[0].y - 1) ||
+      this->isInList(this->getWhereAmI()->position[0].x,
+          this->getWhereAmI()->position[0].y))
       throw GameOver("GameOver");
+  this->updateGhostEatable(this->getWhereAmI()->position[0].x,
+      this->getWhereAmI()->position[0].y - 1);
+  this->updateGhostEatable(this->getWhereAmI()->position[0].x,
+      this->getWhereAmI()->position[0].y);
   if (this->getMap()->getCaseInfo(this->getWhereAmI()->position[0].x,
 				  this->getWhereAmI()->position[0].y - 1) == Map::Info::EMPTY ||
       this->getMap()->getCaseInfo(this->getWhereAmI()->position[0].x,
@@ -74,6 +80,11 @@ void Pacman::goUp()
       this->getMap()->getCaseInfo(this->getWhereAmI()->position[0].x,
           this->getWhereAmI()->position[0].y - 1) == Map::Info::SUPERPOWERUP)
     {
+      if (this->getMap()->getCaseInfo(this->getWhereAmI()->position[0].x,
+          this->getWhereAmI()->position[0].y - 1) == Map::Info::SUPERPOWERUP) {
+          _ghost1->setEatable(true); _ghost2->setEatable(true);
+          _ghost3->setEatable(true); _ghost4->setEatable(true);
+        }
       this->getWhereAmI()->position[0].y--;
       this->getMap()->setCaseInfo(this->getWhereAmI()->position[0].x,
           this->getWhereAmI()->position[0].y, Map::Info::EMPTY);
@@ -85,8 +96,14 @@ void Pacman::goUp()
 void Pacman::goDown()
 {
   if (this->isInList(this->getWhereAmI()->position[0].x,
-          this->getWhereAmI()->position[0].y + 1))
+          this->getWhereAmI()->position[0].y + 1) ||
+      this->isInList(this->getWhereAmI()->position[0].x,
+          this->getWhereAmI()->position[0].y))
       throw GameOver("GameOver");
+  this->updateGhostEatable(this->getWhereAmI()->position[0].x,
+      this->getWhereAmI()->position[0].y + 1);
+  this->updateGhostEatable(this->getWhereAmI()->position[0].x,
+      this->getWhereAmI()->position[0].y);
   if (this->getMap()->getCaseInfo(this->getWhereAmI()->position[0].x,
 				  this->getWhereAmI()->position[0].y + 1) == Map::Info::EMPTY ||
       this->getMap()->getCaseInfo(this->getWhereAmI()->position[0].x,
@@ -94,6 +111,11 @@ void Pacman::goDown()
       this->getMap()->getCaseInfo(this->getWhereAmI()->position[0].x,
           this->getWhereAmI()->position[0].y + 1) == Map::Info::SUPERPOWERUP)
     {
+      if (this->getMap()->getCaseInfo(this->getWhereAmI()->position[0].x,
+          this->getWhereAmI()->position[0].y + 1) == Map::Info::SUPERPOWERUP) {
+          _ghost1->setEatable(true); _ghost2->setEatable(true);
+          _ghost3->setEatable(true); _ghost4->setEatable(true);
+        }
       this->getWhereAmI()->position[0].y++;
       this->getMap()->setCaseInfo(this->getWhereAmI()->position[0].x,
           this->getWhereAmI()->position[0].y, Map::Info::EMPTY);
@@ -105,8 +127,14 @@ void Pacman::goDown()
 void Pacman::goLeft()
 {
   if (this->isInList(this->getWhereAmI()->position[0].x - 1,
+          this->getWhereAmI()->position[0].y) ||
+      this->isInList(this->getWhereAmI()->position[0].x,
           this->getWhereAmI()->position[0].y))
       throw GameOver("GameOver");
+  this->updateGhostEatable(this->getWhereAmI()->position[0].x - 1,
+      this->getWhereAmI()->position[0].y);
+  this->updateGhostEatable(this->getWhereAmI()->position[0].x,
+      this->getWhereAmI()->position[0].y);
   if (this->getMap()->getCaseInfo(this->getWhereAmI()->position[0].x - 1,
 				  this->getWhereAmI()->position[0].y) == Map::Info::EMPTY ||
       this->getMap()->getCaseInfo(this->getWhereAmI()->position[0].x - 1,
@@ -114,6 +142,11 @@ void Pacman::goLeft()
       this->getMap()->getCaseInfo(this->getWhereAmI()->position[0].x - 1,
           this->getWhereAmI()->position[0].y) == Map::Info::SUPERPOWERUP)
     {
+      if (this->getMap()->getCaseInfo(this->getWhereAmI()->position[0].x - 1,
+          this->getWhereAmI()->position[0].y) == Map::Info::SUPERPOWERUP) {
+          _ghost1->setEatable(true); _ghost2->setEatable(true);
+          _ghost3->setEatable(true); _ghost4->setEatable(true);
+        }
       this->getWhereAmI()->position[0].x--;
       this->getMap()->setCaseInfo(this->getWhereAmI()->position[0].x,
           this->getWhereAmI()->position[0].y, Map::Info::EMPTY);
@@ -125,8 +158,14 @@ void Pacman::goLeft()
 void Pacman::goRight()
 {
   if (this->isInList(this->getWhereAmI()->position[0].x + 1,
+          this->getWhereAmI()->position[0].y) ||
+      this->isInList(this->getWhereAmI()->position[0].x,
           this->getWhereAmI()->position[0].y))
       throw GameOver("GameOver");
+  this->updateGhostEatable(this->getWhereAmI()->position[0].x + 1,
+        this->getWhereAmI()->position[0].y);
+  this->updateGhostEatable(this->getWhereAmI()->position[0].x,
+        this->getWhereAmI()->position[0].y);
   if (this->getMap()->getCaseInfo(this->getWhereAmI()->position[0].x + 1,
 				  this->getWhereAmI()->position[0].y) == Map::Info::EMPTY ||
       this->getMap()->getCaseInfo(this->getWhereAmI()->position[0].x + 1,
@@ -134,6 +173,11 @@ void Pacman::goRight()
       this->getMap()->getCaseInfo(this->getWhereAmI()->position[0].x + 1,
           this->getWhereAmI()->position[0].y) == Map::Info::SUPERPOWERUP)
     {
+      if (this->getMap()->getCaseInfo(this->getWhereAmI()->position[0].x + 1,
+          this->getWhereAmI()->position[0].y) == Map::Info::SUPERPOWERUP) {
+          _ghost1->setEatable(true); _ghost2->setEatable(true);
+          _ghost3->setEatable(true); _ghost4->setEatable(true);
+        }
       this->getWhereAmI()->position[0].x++;
       this->getMap()->setCaseInfo(this->getWhereAmI()->position[0].x,
           this->getWhereAmI()->position[0].y, Map::Info::EMPTY);
@@ -144,27 +188,36 @@ void Pacman::goRight()
 
 bool Pacman::isInList(int x, int y) const
 {
-  if ((_ghost1->getWhereAmI()->position[0].x == x && _ghost1->getWhereAmI()->position[0].y == y) ||
-      (_ghost2->getWhereAmI()->position[0].x == x && _ghost2->getWhereAmI()->position[0].y == y) ||
-      (_ghost3->getWhereAmI()->position[0].x == x && _ghost3->getWhereAmI()->position[0].y == y) ||
-      (_ghost4->getWhereAmI()->position[0].x == x && _ghost4->getWhereAmI()->position[0].y == y))
+  if ((_ghost1->getWhereAmI()->position[0].x == x && _ghost1->getWhereAmI()->position[0].y == y && !_ghost1->getEatable()) ||
+      (_ghost2->getWhereAmI()->position[0].x == x && _ghost2->getWhereAmI()->position[0].y == y && !_ghost2->getEatable()) ||
+      (_ghost3->getWhereAmI()->position[0].x == x && _ghost3->getWhereAmI()->position[0].y == y && !_ghost3->getEatable()) ||
+      (_ghost4->getWhereAmI()->position[0].x == x && _ghost4->getWhereAmI()->position[0].y == y && !_ghost4->getEatable()))
     return (true);
   return (false);
 }
 
-void Pacman::isInBlock()
+void Pacman::updateGhostEatable(int x, int y)
 {
-  if (_ghost1->getWhereAmI()->position[0].y == 11)
-    _ghost1->setOutOfBlock();
-  if (_ghost2->getWhereAmI()->position[0].y == 11)
-    _ghost2->setOutOfBlock();
-  if (_ghost3->getWhereAmI()->position[0].y == 11)
-    _ghost3->setOutOfBlock();
-  if (_ghost4->getWhereAmI()->position[0].y == 11)
-    _ghost4->setOutOfBlock();
-  if (_ghost1->getOutOfBlock() == true && _ghost2->getOutOfBlock() == true &&
-      _ghost3->getOutOfBlock() == true && _ghost4->getOutOfBlock() == true)
-    _map->generateIsland(10, 12, 7, 1);
+  if (_ghost1->getWhereAmI()->position[0].x == x && _ghost1->getWhereAmI()->position[0].y == y && _ghost1->getEatable()) {
+    _ghost1->getWhereAmI()->position[0].x = 13;
+    _ghost1->getWhereAmI()->position[0].y = 13;
+    _ghost1->setEatable(false);
+  }
+  else if (_ghost2->getWhereAmI()->position[0].x == x && _ghost2->getWhereAmI()->position[0].y == y && _ghost2->getEatable()) {
+    _ghost2->getWhereAmI()->position[0].x = 13;
+    _ghost2->getWhereAmI()->position[0].y = 14;
+    _ghost2->setEatable(false);
+  }
+  else if (_ghost3->getWhereAmI()->position[0].x == x && _ghost3->getWhereAmI()->position[0].y == y && _ghost3->getEatable()) {
+    _ghost3->getWhereAmI()->position[0].x = 13;
+    _ghost3->getWhereAmI()->position[0].y = 15;
+    _ghost3->setEatable(false);
+  }
+  else if (_ghost4->getWhereAmI()->position[0].x == x && _ghost4->getWhereAmI()->position[0].y == y && _ghost4->getEatable()) {
+    _ghost4->getWhereAmI()->position[0].x = 13;
+    _ghost4->getWhereAmI()->position[0].y = 16;
+    _ghost4->setEatable(false);
+  }
 }
 
 void Pacman::goPlay()
@@ -177,7 +230,7 @@ void Pacman::goPlay()
     this->goLeft();
   else if (_dir == Direction::RIGHT)
     this->goRight();
-  if (_nbPlay == 50) {
+  if (_nbPlay >= 50) {
     _map->setCaseInfo(11, 12, Map::EMPTY);
     _map->setCaseInfo(12, 12, Map::EMPTY);
     _map->setCaseInfo(13, 12, Map::EMPTY);
@@ -188,12 +241,20 @@ void Pacman::goPlay()
     _ghost3->goPlay();
     _ghost4->goPlay();
   }
-  isInBlock();
   updateTiles();
   if (isInList(_whereAmI->position[0].x, _whereAmI->position[0].y))
     throw GameOver("GameOver");
   if (_nbPlay < 50)
     _nbPlay++;
+  if (_ghost1->getEatable() || _ghost2->getEatable() ||
+      _ghost3->getEatable() || _ghost4->getEatable()) {
+        _nbPlay++;
+        if (_nbPlay == 100) {
+          _nbPlay = 50;
+          _ghost1->setEatable(false); _ghost2->setEatable(false);
+          _ghost3->setEatable(false); _ghost4->setEatable(false);
+        }
+    }
 }
 
 void Pacman::updateTiles()
@@ -219,14 +280,19 @@ void Pacman::updateTiles()
       	}
       if (_whereAmI->position[0].x == x && _whereAmI->position[0].y == y)
       	pixel.hexacode = 0xffffff;
+      else if ((_ghost1->getWhereAmI()->position[0].x == x && _ghost1->getWhereAmI()->position[0].y == y && _ghost1->getEatable()) ||
+              (_ghost2->getWhereAmI()->position[0].x == x && _ghost2->getWhereAmI()->position[0].y == y && _ghost2->getEatable())  ||
+              (_ghost3->getWhereAmI()->position[0].x == x && _ghost3->getWhereAmI()->position[0].y == y && _ghost3->getEatable())  ||
+              (_ghost4->getWhereAmI()->position[0].x == x && _ghost4->getWhereAmI()->position[0].y == y && _ghost4->getEatable()))
+        pixel.hexacode = 0xfea347;
       else if (_ghost1->getWhereAmI()->position[0].x == x && _ghost1->getWhereAmI()->position[0].y == y)
-        pixel.hexacode = 0x00ffff;
+        pixel.hexacode = 0xffffff;//0x00ffff;
       else if (_ghost2->getWhereAmI()->position[0].x == x && _ghost2->getWhereAmI()->position[0].y == y)
-          pixel.hexacode = 0x00ff00;
+        pixel.hexacode = 0xffffff;//0x00ff00;
       else if (_ghost3->getWhereAmI()->position[0].x == x && _ghost3->getWhereAmI()->position[0].y == y)
-        pixel.hexacode = 0xffff00;
+        pixel.hexacode = 0xffffff;//0xffff00;
       else if (_ghost4->getWhereAmI()->position[0].x == x && _ghost4->getWhereAmI()->position[0].y == y)
-        pixel.hexacode = 0xff00ff;
+        pixel.hexacode = 0xffffff;//0xff00ff;
       else if (_map->getCaseInfo(x, y) == Map::Info::BLOCK)
       	pixel.hexacode = 0xff0000;
       else if (_map->getCaseInfo(x, y) == Map::Info::EMPTY)

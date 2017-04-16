@@ -5,7 +5,7 @@
 // Login   <person_m@epitech.eu>
 //
 // Started on  Fri Apr 14 17:58:33 2017 Melvin Personnier
-// Last update Sun Apr 16 02:11:36 2017 Melvin Personnier
+// Last update Sun Apr 16 16:37:55 2017 Melvin Personnier
 //
 
 #include "Ghost.hpp"
@@ -21,7 +21,7 @@ Ghost::Ghost(int width, int height, Map *map)
   _whereAmI->position[0].y = height;
   _dir = Direction::DOWN;
   _map = map;
-  _outOfBlock = false;
+  _eatable = false;
 }
 
 Ghost::~Ghost()
@@ -43,19 +43,19 @@ Ghost::Direction Ghost::getDir() const
   return _dir;
 }
 
+bool Ghost::getEatable() const
+{
+  return _eatable;
+}
+
+void Ghost::setEatable(bool b)
+{
+  _eatable = b;
+}
+
 void Ghost::setDir(Direction dir)
 {
   _dir = dir;
-}
-
-bool Ghost::getOutOfBlock()
-{
-  return _outOfBlock;
-}
-
-void Ghost::setOutOfBlock()
-{
-  _outOfBlock = true;
 }
 
 bool Ghost::goUp()

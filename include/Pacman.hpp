@@ -5,7 +5,7 @@
 // Login   <person_m@epitech.eu>
 //
 // Started on  Wed Apr 12 22:11:13 2017 Melvin Personnier
-// Last update Sat Apr 15 16:32:00 2017 Melvin Personnier
+// Last update Sun Apr 16 15:35:09 2017 Melvin Personnier
 //
 
 #ifndef __PACMAN_HPP__
@@ -48,6 +48,7 @@ class Pacman : public ILogic
     void updateTiles();
     void isInBlock();
     bool isInList(int x, int y) const;
+    void updateGhostEatable(int x, int y);
   struct_info runCommand(arcade::CommandType type);
   std::vector<TileInfo> const &getTiles() const;
   Screen const &getScreen() const;

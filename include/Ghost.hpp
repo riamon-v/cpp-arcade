@@ -5,7 +5,7 @@
 // Login   <person_m@epitech.eu>
 //
 // Started on  Fri Apr 14 12:29:06 2017 Melvin Personnier
-// Last update Sat Apr 15 16:36:30 2017 Melvin Personnier
+// Last update Sun Apr 16 16:31:23 2017 Melvin Personnier
 //
 
 #ifndef __GHOST_HPP__
@@ -30,7 +30,6 @@ class Ghost
     Direction _dir;
     bool _eatable;
     Map *_map;
-    bool _outOfBlock;
 
   public:
     Ghost(int x, int y, Map *map);
@@ -39,9 +38,9 @@ class Ghost
     Ghost& operator=(Ghost const &);
 
     Direction getDir() const;
-    bool getOutOfBlock();
+    bool getEatable() const;
     void setDir(Direction _dir);
-    void setOutOfBlock();
+    void setEatable(bool);
     arcade::WhereAmI *getWhereAmI() const;
     Map *getMap() const;
     bool goUp();

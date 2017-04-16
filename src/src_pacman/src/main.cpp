@@ -5,7 +5,7 @@
 // Login   <riamon_v@epitech.net>
 //
 // Started on  Fri Apr  7 16:29:42 2017 Riamon Vincent
-// Last update Sun Apr 16 02:06:47 2017 Melvin Personnier
+// Last update Sun Apr 16 17:36:33 2017 Melvin Personnier
 //
 
 #include <unistd.h>
@@ -42,7 +42,7 @@ void Pacman::getMapToGetMap(arcade::CommandType command, Pacman *pacman)
       width = 0;
       while (width < pacman->getMap()->getWidth())
       {
-        caseToUpdate = height * pacman->getMap()->getHeight() + width;
+        caseToUpdate = height * pacman->getMap()->getWidth() + width;
         if (pacman->getMap()->getCaseInfo(width, height) == Map::Info::EMPTY)
     			getMap->tile[caseToUpdate] = arcade::TileType::EMPTY;
     		else if (pacman->getMap()->getCaseInfo(width, height) == Map::Info::BLOCK)
