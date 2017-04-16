@@ -173,7 +173,7 @@ void Manager::_movePointed(std::vector<t_value_menu> &v, const char c)
 
   while (i < v.size() && !v[i].pointed)
    i = i + 1;
-  if (v.size() >= i)
+  if (i >= v.size())
   {
     v[0].pointed = 1;
     return ;
@@ -181,12 +181,12 @@ void Manager::_movePointed(std::vector<t_value_menu> &v, const char c)
   if (c)
   {
     v[i].pointed = 0;
-    v[(i + 1 >= v.size() ? 0 : i + 1)].pointed = 1;
+    v[(i + 1 >= v.size() ? 0 : i + 1)].pointed = true;
   }
   else
   {
     v[i].pointed = 0;
-    v[(i <= 0 ? v.size() - 1 : i - 1)].pointed = 1;
+    v[(i <= 0 ? v.size() - 1 : i - 1)].pointed = true;
   }
 }
 
@@ -211,7 +211,7 @@ void Manager::_runCmdMenu(const Input inp, t_info_menu &s, bool &run, gameLib &r
     _movePointed(s.games, 1);
   else if (inp == Input::PREV_LIB || (inp == Input::UP && s.graphics[0].checked))
     _movePointed(s.graphics, 0);
-  else if (inp == Input::PREV_GAME || (inp == Input::DOWN && s.games[0].checked))
+  else if (inp == Input::PREV_GAME || (inp == Input::UP && s.games[0].checked))
     _movePointed(s.games, 0);
   else if (inp == Input::LEFT || inp == Input::RIGHT)
     _moveChecked(s.games, s.graphics);
@@ -235,19 +235,21 @@ gameLib Manager::menu()
   for (size_t i = 0; i < _libs.size(); i++) {
     v.value = _libs[i];
     v.checked = 0;
-    v.pointed = (_libs[i] == _Lman->getName());
+    v.pointed = (_libs[i] ==
+                  _Lman->getName().substr(_Lman->getName().find_last_of("/") + 1));
     s.graphics.push_back(v);
   }
 
   for (size_t i = 0; i < _games.size(); i++) {
     v.value = _games[i];
-    v.checked = 0;
+    v.checked = 1;
     v.pointed = (i == 0);
     s.games.push_back(v);
   }
 
   while (run)
   {
+    usleep(30000);
     Input inp;
     if ((inp = _lib->getInputs()) != Input::UNDEFINED)
       _runCmdMenu(inp, s, run, ret);

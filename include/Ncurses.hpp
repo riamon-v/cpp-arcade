@@ -34,6 +34,9 @@ private:
   WINDOW *_win;
   mutable std::vector<uint32_t> _colors;
   std::map<int, Input> _inputs;
+
+  void displayElements(const std::vector<t_value_menu> &tab, const std::string &s,
+                        const unsigned int begin) const;
 };
 
 namespace cln

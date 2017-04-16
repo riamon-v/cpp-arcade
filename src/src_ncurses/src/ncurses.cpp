@@ -99,9 +99,39 @@ void Ncurses::display(std::vector<TileInfo> const &_tiles) const
   wrefresh(_win);
 }
 
+void Ncurses::displayElements(const std::vector<t_value_menu> &tab, const std::string &s,
+                      const unsigned int begin) const{
+    if (tab[0].checked)
+    {
+      mvwprintw(_win, 15, begin, "%s", "----------------------------------------");
+      for (size_t i = 0; i < 20; i++) {
+        mvwprintw(_win, 15 + i, begin, "%c", '|');
+      }
+
+      for (size_t i = 0; i < 20; i++) {
+        mvwprintw(_win, 15 + i,  begin + 40, "%c", '|');
+      }
+      mvwprintw(_win, 35, begin, "%s", "----------------------------------------");
+    }
+
+  mvwprintw(_win, 17, begin + 17, "%s", s.c_str());
+
+  for (size_t i = 0; i < tab.size(); i++) {
+    mvwprintw(_win, 19 + (i * 2), begin + 10, "%s%s", tab[i].pointed ? "-> " : "",
+              tab[i].value.c_str());
+  }
+
+}
+
 void Ncurses::displayMenu(const t_info_menu &s) const
 {
-  (void)s;
+  wclear(_win);
+  mvwprintw(_win, 5, 20, "%s", "ARCADE");
+  mvwprintw(_win, 8, 5, "%s", "Created by : RIAMON - PERSONNE - MOMO");
+  mvwprintw(_win, 11, 12, "%s", "Press ENTER to start...");
+
+  displayElements(s.games, "GAMES", 0);
+  displayElements(s.graphics, "GRAPHICS", 40);
 }
 
 Input Ncurses::getInputs() const
