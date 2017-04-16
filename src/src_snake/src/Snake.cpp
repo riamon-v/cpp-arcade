@@ -5,7 +5,7 @@
 // Login   <person_m@epitech.eu>
 //
 // Started on  Tue Apr 11 17:18:54 2017 Melvin Personnier
-// Last update Fri Apr 14 13:07:33 2017 Riamon Vincent
+// Last update Sun Apr 16 18:28:40 2017 Melvin Personnier
 //
 
 #include "Snake.hpp"
@@ -30,7 +30,9 @@ Snake::Snake(int width, int height)
   _dir = Direction::UP;
   _screen.width = MAP_W;
   _screen.height = MAP_H;
-  _speed = 80000;
+  _speedInit = 800000;
+  _nbPowerUp = 4;
+  _speed = _speedInit / _nbPowerUp;
 }
 
 Snake::~Snake()
@@ -78,6 +80,8 @@ void Snake::goUp()
         this->getWhereAmI()->position[0].y - 1) == Map::POWERUP) {
         _powerUp = true;
         this->getMap()->setCaseInfo(this->getWhereAmI()->position[0].x, this->getWhereAmI()->position[0].y - 1, Map::EMPTY);
+        _nbPowerUp++;
+        _speed = _speedInit / _nbPowerUp;
       }
     if (_powerUp == true) {
           this->getWhereAmI()->position[lenght + 1].y = this->getWhereAmI()->position[lenght].y;
@@ -117,6 +121,8 @@ void Snake::goDown()
         this->getWhereAmI()->position[0].y + 1) == Map::Info::POWERUP) {
         _powerUp = true;
         this->getMap()->setCaseInfo(this->getWhereAmI()->position[0].x, this->getWhereAmI()->position[0].y + 1, Map::EMPTY);
+        _nbPowerUp++;
+        _speed = _speedInit / _nbPowerUp;
       }
     if (_powerUp == true) {
         this->getWhereAmI()->position[lenght + 1].y = this->getWhereAmI()->position[lenght].y;
@@ -156,6 +162,8 @@ void Snake::goLeft()
         this->getWhereAmI()->position[0].y) == Map::Info::POWERUP) {
         _powerUp = true;
         this->getMap()->setCaseInfo(this->getWhereAmI()->position[0].x - 1, this->getWhereAmI()->position[0].y, Map::EMPTY);
+        _nbPowerUp++;
+        _speed = _speedInit / _nbPowerUp;
       }
     if (_powerUp == true) {
         this->getWhereAmI()->position[lenght + 1].y = this->getWhereAmI()->position[lenght].y;
@@ -195,6 +203,8 @@ void Snake::goRight()
         this->getWhereAmI()->position[0].y) == Map::Info::POWERUP) {
         _powerUp = true;
         this->getMap()->setCaseInfo(this->getWhereAmI()->position[0].x + 1, this->getWhereAmI()->position[0].y, Map::EMPTY);
+        _nbPowerUp++;
+        _speed = _speedInit / _nbPowerUp;
       }
     if (_powerUp == true) {
         this->getWhereAmI()->position[lenght + 1].y = this->getWhereAmI()->position[lenght].y;

@@ -5,7 +5,7 @@
 // Login   <person_m@epitech.eu>
 //
 // Started on  Thu Apr 13 09:49:51 2017 Melvin Personnier
-// Last update Sun Apr 16 17:22:32 2017 Melvin Personnier
+// Last update Sun Apr 16 19:08:01 2017 Melvin Personnier
 //
 
 #include "Pacman.hpp"
@@ -286,13 +286,13 @@ void Pacman::updateTiles()
               (_ghost4->getWhereAmI()->position[0].x == x && _ghost4->getWhereAmI()->position[0].y == y && _ghost4->getEatable()))
         pixel.hexacode = 0xfea347;
       else if (_ghost1->getWhereAmI()->position[0].x == x && _ghost1->getWhereAmI()->position[0].y == y)
-        pixel.hexacode = 0xffffff;//0x00ffff;
+        pixel.hexacode = 0x00ffff;
       else if (_ghost2->getWhereAmI()->position[0].x == x && _ghost2->getWhereAmI()->position[0].y == y)
-        pixel.hexacode = 0xffffff;//0x00ff00;
+        pixel.hexacode = 0x00ff00;
       else if (_ghost3->getWhereAmI()->position[0].x == x && _ghost3->getWhereAmI()->position[0].y == y)
-        pixel.hexacode = 0xffffff;//0xffff00;
+        pixel.hexacode = 0xffff00;
       else if (_ghost4->getWhereAmI()->position[0].x == x && _ghost4->getWhereAmI()->position[0].y == y)
-        pixel.hexacode = 0xffffff;//0xff00ff;
+        pixel.hexacode = 0xff00ff;
       else if (_map->getCaseInfo(x, y) == Map::Info::BLOCK)
       	pixel.hexacode = 0xff0000;
       else if (_map->getCaseInfo(x, y) == Map::Info::EMPTY)
