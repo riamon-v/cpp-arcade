@@ -5,7 +5,7 @@
 // Login   <person_m@epitech.eu>
 //
 // Started on  Tue Apr 11 17:18:54 2017 Melvin Personnier
-// Last update Sun Apr 16 03:15:06 2017 Melvin Personnier
+// Last update Sun Apr 16 19:13:17 2017 Melvin Personnier
 //
 
 #include "Snake.hpp"
@@ -326,9 +326,14 @@ Screen const &Snake::getScreen() const
   return (_screen);
 }
 
-int const &Snake::getSpeed() const
+int Snake::getSpeed() const
 {
   return (_speed);
+}
+
+int Snake::getScore() const
+{
+  return 1;
 }
 
 ILogic *cln::clone()

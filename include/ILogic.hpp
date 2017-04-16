@@ -1,6 +1,6 @@
 //
 //  ILogic.hpp
-//  
+//
 //
 //  Created by Vincent COUVERCHEL on 12/04/2017.
 //
@@ -37,7 +37,8 @@ public:
   virtual struct_info runCommand(arcade::CommandType type) = 0;
   virtual std::vector<TileInfo> const &getTiles() const = 0;
   virtual Screen const &getScreen() const = 0;
-  virtual int const &getSpeed() const = 0;
+  virtual int getSpeed() const = 0;
+  virtual int getScore() const = 0;
 };
 
 typedef ILogic *(*func_logic)();

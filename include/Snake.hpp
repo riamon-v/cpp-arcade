@@ -5,7 +5,7 @@
 // Login   <person_m@epitech.eu>
 //
 // Started on  Tue Apr 11 15:03:32 2017 Melvin Personnier
-// Last update Sun Apr 16 01:55:47 2017 Melvin Personnier
+// Last update Sun Apr 16 19:13:00 2017 Melvin Personnier
 //
 
 #ifndef __SNAKE_HPP__
@@ -50,7 +50,8 @@ public:
   void updateTiles();
   std::vector<TileInfo> const  &getTiles() const;
   Screen const  &getScreen() const;
-  int const &getSpeed() const;
+  int getSpeed() const;
+  int getScore() const;
   bool _gameOver;
 
 private:

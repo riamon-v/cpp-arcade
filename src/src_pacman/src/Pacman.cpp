@@ -5,7 +5,7 @@
 // Login   <person_m@epitech.eu>
 //
 // Started on  Thu Apr 13 09:49:51 2017 Melvin Personnier
-// Last update Sun Apr 16 19:08:01 2017 Melvin Personnier
+// Last update Sun Apr 16 19:13:35 2017 Melvin Personnier
 //
 
 #include "Pacman.hpp"
@@ -335,9 +335,14 @@ Screen const &Pacman::getScreen() const
   return (_screen);
 }
 
-int const &Pacman::getSpeed() const
+int Pacman::getSpeed() const
 {
   return (_speed);
+}
+
+int Pacman::getScore() const
+{
+  return (1);
 }
 
 ILogic *cln::clone()
