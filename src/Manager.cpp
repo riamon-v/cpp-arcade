@@ -37,8 +37,8 @@ Manager::Manager(GLManager *lman, IDisplay *lib, GLManager *gman, ILogic *game) 
 Manager::~Manager()
 {
   delete _lib;
-  delete _Lman;
   delete _game;
+  delete _Lman;
   delete _Gman;
 }
 
@@ -60,9 +60,6 @@ void Manager::do_action(Input in)
   };
   _fun[RESTART] = [this] () {
     this->restart();
-  };
-  _fun[MENU] = [this] () {
-    this->menu(); //TODO à voir
   };
   _fun[EXIT] = [this] () {
     this->my_exit();
