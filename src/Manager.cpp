@@ -5,7 +5,7 @@
 // Login   <riamon_v@epitech.net>
 //
 // Started on  Thu Apr  6 18:54:40 2017 Riamon Vincent
-// Last update Fri Apr 14 18:04:13 2017 Riamon Vincent
+// Last update Fri Apr 14 23:22:03 2017 Riamon Vincent
 //
 
 #include "Manager.hpp"
@@ -253,6 +253,7 @@ gameLib Manager::menu()
     Input inp;
     if ((inp = _lib->getInputs()) != Input::UNDEFINED)
       _runCmdMenu(inp, s, run, ret);
+    usleep(1000000);
     _lib->displayMenu(s);
   }
  return (ret);
