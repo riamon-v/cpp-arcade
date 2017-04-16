@@ -5,7 +5,7 @@
 ## Login   <riamon_v@epitech.net>
 ##
 ## Started on  Fri Apr  7 16:19:03 2017 Riamon Vincent
-## Last update Fri Apr 14 00:53:23 2017 Riamon Vincent
+## Last update Sat Apr 15 19:06:45 2017 Melvin Personnier
 ##
 
 NAME:=		arcade
@@ -35,6 +35,7 @@ $(NAME): $(OBJ)
 	make -C ./src/src_ncurses/
 	make -C ./src/src_sfml/
 	make -C ./src/src_snake/
+	make -C ./src/src_nibbler/
 	make -C ./src/src_pacman/
 	$(CXX) -o $(NAME) $(OBJ) $(CXXFLAGS) $(LDFLAGS) && \
 		echo -e $(GREEN)"[BIN]"$(CYAN) $(NAME)$(DEFAULT) || \
@@ -46,6 +47,7 @@ clean:
 	make clean -C ./src/src_ncurses/
 	make clean -C ./src/src_sfml/
 	make clean -C ./src/src_snake/
+	make -C ./src/src_nibbler/
 	make clean -C ./src/src_pacman/
 	echo -e $(CYAN)"Cleaning $(NAME) tmp files..." $(DEFAULT)
 	$(RM) $(OBJ)
@@ -55,6 +57,7 @@ fclean:	clean
 	make fclean -C ./src/src_ncurses/
 	make fclean -C ./src/src_sfml/
 	make fclean -C ./src/src_snake/
+	make -C ./src/src_nibbler/
 	make fclean -C ./src/src_pacman/
 	echo -e $(CYAN)"Cleaning $(NAME) executable..." $(DEFAULT)
 	$(RM) $(NAME)

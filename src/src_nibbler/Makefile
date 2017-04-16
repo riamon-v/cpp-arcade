@@ -5,22 +5,23 @@
 ## Login   <riamon_v@epitech.net>
 ##
 ## Started on  Thu Apr  6 18:10:28 2017 Riamon Vincent
-## Last update Sat Apr 15 15:39:47 2017 Melvin Personnier
+## Last update Sat Apr 15 17:49:25 2017 Melvin Personnier
 ##
 
-NAME:=		../../games/lib_arcade_pacman.so
+NAME:=		../../games/lib_arcade_nibbler.so
+
 SRCDIR:=	src/
 
 INCLUDE:=	../../include \
 
 SRC:=		main.cpp \
-		../../Errors.cpp \
 		Map.cpp \
-		Pacman.cpp \
-		Ghost.cpp \
+		Snake.cpp \
+		../../Errors.cpp
 
 CXX:=		g++
-CXXFLAGS:=	-W -Wall -Wextra -fpic -g -std=c++14
+CXXFLAGS:=	-W -Wall -Wextra -fpic -g -std=c++14 \
+
 LDFLAGS:=	-shared
 SRC:=		$(addprefix $(SRCDIR), $(SRC))
 OBJ:=		$(SRC:.cpp=.o)

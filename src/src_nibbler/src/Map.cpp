@@ -5,10 +5,11 @@
 // Login   <person_m@epitech.eu>
 //
 // Started on  Sun Apr  9 21:29:22 2017 Melvin Personnier
-// Last update Sat Apr 15 16:48:37 2017 Melvin Personnier
+// Last update Sun Apr 16 03:10:15 2017 Melvin Personnier
 //
 
 #include "Map.hpp"
+#include "Snake.hpp"
 
 Map::Map(int width, int height)
     : _width(width), _height(height)
@@ -37,6 +38,17 @@ void Map::init()
       else
         _map[i][j] = EMPTY;
     }
+  for (int a = 0; a < 12; a++)
+    generateIslandOption(rand() % (MAP_W - 5) + 2, rand() % (MAP_H - 5) + 2, rand() % 2 + 1, rand() % 2 + 1, Map::BLOCK);
+  if (this->getWidth() > 12 && this->getHeight() > 12)
+    generateIslandOption(this->getWidth() / 2 - 5, this->getHeight() / 2 - 5, 10 , 10, Map::EMPTY);
+}
+
+void Map::generateIslandOption(int posX, int posY, int largeur, int longueur, Map::Info type)
+{
+  for (int i = posY; i < longueur + posY; i++)
+    for (int j = posX; j < largeur + posX; j++)
+      _map[i][j] = type;
 }
 
 int Map::getHeight() const

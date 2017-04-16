@@ -5,7 +5,7 @@
 // Login   <riamon_v@epitech.net>
 //
 // Started on  Fri Apr  7 16:29:42 2017 Riamon Vincent
-// Last update Sun Apr 16 03:00:46 2017 Melvin Personnier
+// Last update Sun Apr 16 03:00:00 2017 Melvin Personnier
 //
 
 #include "Snake.hpp"
@@ -58,7 +58,7 @@ void Snake::getMapToGetMap(arcade::CommandType command, Snake *snake)
 extern "C"  void		Play(void)
 {
   arcade::CommandType command;
-  Snake *snake = new Snake(12, 12);
+  Snake *snake = new Snake(MAP_W, MAP_H);
 
   while (std::cin)
   {

@@ -5,7 +5,7 @@
 // Login   <person_m@epitech.eu>
 //
 // Started on  Wed Apr 12 22:11:13 2017 Melvin Personnier
-// Last update Fri Apr 14 17:12:49 2017 Melvin Personnier
+// Last update Sat Apr 15 16:32:00 2017 Melvin Personnier
 //
 
 #ifndef __PACMAN_HPP__
@@ -14,6 +14,7 @@
 # include "ILogic.hpp"
 # include "IDisplay.hpp"
 # include "Protocol.hpp"
+# include "Ghost.hpp"
 
 class Pacman : public ILogic
 {
@@ -44,7 +45,9 @@ class Pacman : public ILogic
     void goLeft();
     void goRight();
     void goPlay();
-  void updateTiles();
+    void updateTiles();
+    void isInBlock();
+    bool isInList(int x, int y) const;
   struct_info runCommand(arcade::CommandType type);
   std::vector<TileInfo> const &getTiles() const;
   Screen const &getScreen() const;
@@ -52,10 +55,15 @@ class Pacman : public ILogic
 
 private:
   Map *_map;
+  Ghost *_ghost1;
+  Ghost *_ghost2;
+  Ghost *_ghost3;
+  Ghost *_ghost4;
   arcade::WhereAmI *_whereAmI;
   bool _gameOver;
   Direction _dir;
   Direction _lastDir;
+  int _nbPlay;
   std::vector<TileInfo> _tiles;
   Screen _screen;
   int _speed;

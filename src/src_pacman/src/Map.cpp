@@ -5,7 +5,7 @@
 // Login   <person_m@epitech.eu>
 //
 // Started on  Thu Apr 13 10:06:09 2017 Melvin Personnier
-// Last update Fri Apr 14 17:09:25 2017 Melvin Personnier
+// Last update Sun Apr 16 02:15:17 2017 Melvin Personnier
 //
 
 #include "Map.hpp"
@@ -23,8 +23,8 @@ Map::Map(int width, int height)
 Map::~Map()
 {
 	for (int i = 0; i < _height; i++)
-		delete _map[i];
-	delete _map;
+		delete [] _map[i];
+	delete [] _map;
 }
 
 void Map::init()
@@ -79,6 +79,7 @@ void Map::init()
   generateIsland(10, 12, 1, 6); // g
   generateIsland(16, 12, 1, 6); // d
   _map[12][13] = Map::DOOR;
+  _map[23][1] = _map[23][25] = _map[3][1] = _map[3][25] = Map::SUPERPOWERUP;
 }
 
 int Map::getHeight() const

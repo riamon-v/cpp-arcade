@@ -5,14 +5,14 @@
 // Login   <person_m@epitech.eu>
 //
 // Started on  Tue Apr 11 15:03:32 2017 Melvin Personnier
-// Last update Fri Apr 14 00:23:49 2017 Riamon Vincent
+// Last update Sun Apr 16 01:55:47 2017 Melvin Personnier
 //
 
 #ifndef __SNAKE_HPP__
 # define __SNAKE_HPP__
 
 # include "ILogic.hpp"
-# include "IDisplay.hpp" 
+# include "IDisplay.hpp"
 # include "Protocol.hpp"
 
 class Snake : public ILogic
@@ -37,6 +37,7 @@ public:
   Direction getDir() const;
   void getWhereAmI(arcade::CommandType command, Snake *snake);
   void getMapToGetMap(arcade::CommandType command, Snake *snake);
+  void restartGame();
 
   void setDir(Direction _dir);
   void goUp();
@@ -60,6 +61,9 @@ private:
   std::vector<TileInfo> _tiles;
   Screen _screen;
   int _speed;
+  int _speedInit;
+  int _nbPowerUp;
+  int _nbPowerUpMax;
 };
 
 namespace cln

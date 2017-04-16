@@ -5,7 +5,7 @@
 // Login   <person_m@epitech.eu>
 //
 // Started on  Sun Apr  9 20:32:50 2017 Melvin Personnier
-// Last update Thu Apr 13 19:06:47 2017 Melvin Personnier
+// Last update Sun Apr 16 03:08:58 2017 Melvin Personnier
 //
 
 #ifndef __MAP_HPP__
@@ -22,7 +22,8 @@ class Map
       BLOCK = 1,
       DOOR = 4,
       POWERUP = 6,
-      ERROR = 7
+      ERROR = 7,
+      SUPERPOWERUP = 8,
     };
 
   private:
@@ -42,7 +43,9 @@ class Map
     void setCaseInfo(int width, int height, Info info);
     void setPowerUp();
     void init();
+    void generateIslandOption(int posX, int posY, int largeur, int longueur, Map::Info type);
     void generateIsland(int posX, int posY, int largeur, int longueur);
+
 };
 
 #endif /* !__MAP_HPP__ */

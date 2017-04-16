@@ -5,7 +5,7 @@
 // Login   <riamon_v@epitech.net>
 //
 // Started on  Fri Apr  7 16:29:42 2017 Riamon Vincent
-// Last update Fri Apr 14 16:57:45 2017 Melvin Personnier
+// Last update Sun Apr 16 02:06:47 2017 Melvin Personnier
 //
 
 #include <unistd.h>
@@ -51,6 +51,8 @@ void Pacman::getMapToGetMap(arcade::CommandType command, Pacman *pacman)
     			getMap->tile[caseToUpdate] = arcade::TileType::BLOCK;
     		else if (pacman->getMap()->getCaseInfo(width, height) == Map::Info::POWERUP)
     			getMap->tile[caseToUpdate] = arcade::TileType::POWERUP;
+        else if (pacman->getMap()->getCaseInfo(width, height) == Map::Info::SUPERPOWERUP)
+          getMap->tile[caseToUpdate] = arcade::TileType::POWERUP;
         ++width;
       }
       ++height;
