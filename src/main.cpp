@@ -12,29 +12,33 @@
 #include "Manager.hpp"
 #include "Snake.hpp"
 
-void		main_loop(IDisplay *lib, GLManager *lman, ILogic *game, GLManager *gman)
+void		mainLoop(Manager &Iman)
 {
-  Manager Iman(lman, lib, gman, game);
+  gameLib s;
 
+  s = Iman.menu();
+  if (s.game == "" || s.lib == "")
+    return ;
+  if (s.lib != Iman._Lman->getName().substr(Iman._Lman->getName().find_last_of("/") + 1))
+    Iman.switch_lib(s.lib);
+  if (s.game != Iman._Gman->getName().substr(Iman._Gman->getName().find_last_of("/") + 1))
+    Iman.switch_game(s.game);
+  Iman.restart();
   while (Iman.is_running)
     {
       //Input gestion
       try {
-	Iman.do_action(Iman._lib->getInputs());
-	//Game logic
-	usleep(Iman._game->getSpeed());
-	Iman._game->runCommand(arcade::CommandType::PLAY);
-	//Display
-	Iman._lib->display(Iman._game->getTiles());
+	         Iman.do_action(Iman._lib->getInputs());
+	         //Game logic
+	         usleep(Iman._game->getSpeed());
+	         Iman._game->runCommand(arcade::CommandType::PLAY);
+	          //Display
+	          Iman._lib->display(Iman._game->getTiles());
       } catch (GameOver const &err) {
-	std::cout << err.what() << std::endl;
-	Iman.is_running = 0;
+	       std::cout << err.what() << std::endl;
+         return (mainLoop(Iman));
       }
     }
-  delete Iman._lib;
-  delete Iman._Lman;
-  delete Iman._game;
-  delete Iman._Gman;
 }
 
 int		main(int argc, char **argv)
@@ -67,6 +71,7 @@ int		main(int argc, char **argv)
     return ((std::cerr<< Gman->Error() << std::endl) && 1);
   lib = clone();
   game = clone_game();
-  main_loop(lib, Lman, game, Gman);
+  Manager Iman(Lman, lib, Gman, game);
+  mainLoop(Iman);
   return (0);
 }

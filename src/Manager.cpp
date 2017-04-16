@@ -36,6 +36,10 @@ Manager::Manager(GLManager *lman, IDisplay *lib, GLManager *gman, ILogic *game) 
 
 Manager::~Manager()
 {
+  delete _lib;
+  delete _Lman;
+  delete _game;
+  delete _Gman;
 }
 
 void Manager::do_action(Input in)
@@ -107,7 +111,7 @@ std::string Manager::name_next_game(int mode)
   return (NULL);
 }
 
-void Manager::switch_lib(int mode)
+void Manager::switch_lib(const int mode)
 {
   std::string lib_name;
   std::string dir("./lib/");
@@ -126,7 +130,7 @@ void Manager::switch_lib(int mode)
   _lib = clone();
 }
 
-void Manager::switch_game(int mode)
+void Manager::switch_game(const int mode)
 {
   std::string game_name;
   std::string dir("./games/");
@@ -141,6 +145,30 @@ void Manager::switch_game(int mode)
     delete _game;
   std::cout << "Switch to Game " << game_name << std::endl;
   _Gman->Switch(dir + game_name);
+  clone = (func_logic)dlsym(_Gman->getHandle(), "clone");
+  _game = clone();
+}
+
+void Manager::switch_lib(const std::string &lib)
+{
+  std::string dir("./lib/");
+  func_display clone;
+
+  if (Manager::is_running)
+    delete _lib;
+  _Lman->Switch(dir + lib);
+  clone = (func_display)dlsym(_Lman->getHandle(), "clone");
+  _lib = clone();
+}
+
+void Manager::switch_game(const std::string &game)
+{
+  std::string dir("./games/");
+  func_logic clone;
+
+  if (Manager::is_running)
+    delete _game;
+  _Gman->Switch(dir + game);
   clone = (func_logic)dlsym(_Gman->getHandle(), "clone");
   _game = clone();
 }
@@ -253,7 +281,6 @@ gameLib Manager::menu()
     Input inp;
     if ((inp = _lib->getInputs()) != Input::UNDEFINED)
       _runCmdMenu(inp, s, run, ret);
-    usleep(1000000);
     _lib->displayMenu(s);
   }
  return (ret);

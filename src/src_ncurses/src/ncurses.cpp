@@ -75,6 +75,7 @@ void Ncurses::display(std::vector<TileInfo> const &_tiles) const
 
   x = 0;
   y = 0;
+  wclear(_win);
   start_color();
   for (int i = 0; i < MAP_W * MAP_H; i++)
     {
@@ -105,11 +106,11 @@ void Ncurses::displayElements(const std::vector<t_value_menu> &tab, const std::s
     {
       mvwprintw(_win, 15, begin, "%s", "----------------------------------------");
       for (size_t i = 0; i < 20; i++) {
-        mvwprintw(_win, 15 + i, begin, "%c", '|');
+        mvwprintw(_win, 16 + i, begin, "%c", '|');
       }
 
-      for (size_t i = 0; i < 20; i++) {
-        mvwprintw(_win, 15 + i,  begin + 40, "%c", '|');
+      for (size_t i = 0; i < 19; i++) {
+        mvwprintw(_win, 16 + i,  begin + 40, "%c", '|');
       }
       mvwprintw(_win, 35, begin, "%s", "----------------------------------------");
     }

@@ -42,6 +42,13 @@ public:
 private:
   mutable t_bunny_window *_win;
   mutable t_bunny_pixelarray *_pix;
+  t_bunny_picture *_arcade;
+  t_bunny_picture *_menu;
+  t_bunny_picture *_menuS;
+  std::map<std::string, t_bunny_picture *> _pictures;
+
+  void drawMenu(const std::vector<t_value_menu> &tab, const unsigned int begin) const;
+
 };
 
 namespace cln

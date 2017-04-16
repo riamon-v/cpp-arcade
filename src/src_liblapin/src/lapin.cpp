@@ -25,6 +25,21 @@ Lapin::Lapin()
   _inputs[BKS_DOWN] = DOWN;
   _inputs[BKS_RETURN] = PLAY;
   _in = UNDEFINED;
+  _arcade = bunny_load_picture("src/src_liblapin/images/arcade.png");
+  _menu = bunny_load_picture("src/src_liblapin/images/menu.png");
+  _menuS = bunny_load_picture("src/src_liblapin/images/menuS.png");
+  _pictures["pacman"] = bunny_load_picture("src/src_liblapin/images/pacman.png");
+  _pictures["pacmanS"] = bunny_load_picture("src/src_liblapin/images/pacmanS.png");
+  _pictures["snake"] = bunny_load_picture("src/src_liblapin/images/snake.png");
+  _pictures["snakeS"] = bunny_load_picture("src/src_liblapin/images/snakeS.png");
+  _pictures["nibbler"] = bunny_load_picture("src/src_liblapin/images/nibbler.png");
+  _pictures["nibblerS"] = bunny_load_picture("src/src_liblapin/images/nibblerS.png");
+  _pictures["ncurses"] = bunny_load_picture("src/src_liblapin/images/ncurses.png");
+  _pictures["ncursesS"] = bunny_load_picture("src/src_liblapin/images/ncursesS.png");
+  _pictures["sfml"] = bunny_load_picture("src/src_liblapin/images/sfml.png");
+  _pictures["sfmlS"] = bunny_load_picture("src/src_liblapin/images/sfmlS.png");
+  _pictures["lapin"] = bunny_load_picture("src/src_liblapin/images/lapin.png");
+  _pictures["lapinS"] = bunny_load_picture("src/src_liblapin/images/lapinS.png");
   configure(WIN_W, WIN_H);
 }
 
@@ -62,43 +77,60 @@ void Lapin::display(std::vector<TileInfo> const &_tiles) const
   bunny_display(_win);
 }
 
+void Lapin::drawMenu(const std::vector<t_value_menu> &tab, const unsigned int begin) const{
+  t_bunny_position p;
+
+  if (tab[0].checked)
+  {
+      p.x = begin;
+      p.y = 160;
+      if (_menuS || _menu)
+        bunny_blit(&_win->buffer, _menuS ? _menuS : _menu, &p);
+  }
+  else if (_menuS)
+  {
+    p.x = begin;
+    p.y = 160;
+    if (_menu)
+      bunny_blit(&_win->buffer, _menu, &p);
+  }
+
+  for (size_t i = 0; i < tab.size(); i++) {
+    if (tab[i].value.find_last_of("_") != std::string::npos &&
+        tab[i].value.find_last_of(".") != std::string::npos)
+      {
+        unsigned int f = tab[i].value.find_last_of("_");
+        std::string pict = tab[i].value.substr(f + 1,
+                                            tab[i].value.find_last_of(".") - f - 1);
+        if (tab[i].pointed)
+          pict = pict + 'S';
+        try {
+          t_bunny_picture *tmp;
+          tmp = _pictures.at(pict);
+          p.x = 31 + begin;
+          p.y = 190 + i * 100;
+          bunny_blit(&_win->buffer, tmp, &p);
+        } catch (const std::exception &c) {
+          std::cerr << "don't found " << pict << " image"<< '\n';
+        }
+      }
+  }
+}
+
 void Lapin::displayMenu(const t_info_menu &s) const
 {
-  t_bunny_picture *img_games[3];
-  t_bunny_picture *img_libs[4];
-  t_bunny_position pos[2];
-
-  (void)s;
-  pos[0].x = 50;
-  pos[0].y = 50;
-  pos[1].x = 330;
-  pos[1].y = 50;
-  color_full(_pix, BLACK);
-  img_games[0] = bunny_load_picture("src/src_liblapin/src/cadre-jeux.png");
-  img_games[1] = bunny_load_picture("src/src_liblapin/src/cadre-Scheck.png");
-  img_games[2] = bunny_load_picture("src/src_liblapin/src/cadre-Pcheck.png");
-  img_libs[0] = bunny_load_picture("src/src_liblapin/src/cadre-lib.png");
-  img_libs[1] = bunny_load_picture("src/src_liblapin/src/cadre-Lapincheck.png");
-  img_libs[2] = bunny_load_picture("src/src_liblapin/src/cadre-SFMLcheck.png");
-  img_libs[3] = bunny_load_picture("src/src_liblapin/src/cadre-Ncursescheck.png");
+  color_full(_pix, 0x303130);
   bunny_blit(&_win->buffer, &_pix->clipable, 0);
-  bunny_blit(&_win->buffer, img_games[0], &pos[0]);
-  bunny_blit(&_win->buffer, img_libs[0], &pos[1]);
+  if (_arcade)
+  {
+    t_bunny_position p;
+    p.x = 150;
+    p.y = 0;
+    bunny_blit(&_win->buffer, _arcade, &p);
+  }
+  drawMenu(s.games, 20);
+  drawMenu(s.graphics, 300);
   bunny_display(_win);
-  for (unsigned int i = 0; i < s.games.size(); i++)
-    {
-      std::cout << "Value: " << s.games[i].value << "\nChecked: " << s.games[i].checked << "\nPointed: " << s.games[i].pointed << std::endl;
-    }
-  for (unsigned int i = 0; i < s.graphics.size(); i++)
-    {
-      std::cout << "Value: " << s.graphics[i].value << "\nChecked: " << s.graphics[i].checked << "\nPointed: " << s.graphics[i].pointed << std::endl;
-    }
-  for (int i = 0; i < 4; i++)
-    {
-      if (i < 3)
-	bunny_delete_clipable(img_games[i]);
-      bunny_delete_clipable(img_libs[i]);
-    }
 }
 
 t_bunny_response Lapin::pseudo_events(t_bunny_event_state st,

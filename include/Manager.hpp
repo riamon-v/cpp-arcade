@@ -26,8 +26,10 @@ public:
   void do_action(Input);
   std::string name_next_lib(int mode);
   std::string name_next_game(int mode);
-  void switch_lib(int mode);
-  void switch_game(int mode);
+  void switch_lib(const int mode);
+  void switch_game(const int mode);
+  void switch_lib(const std::string &);
+  void switch_game(const std::string &);
   void restart();
   gameLib menu();
   void my_exit();
