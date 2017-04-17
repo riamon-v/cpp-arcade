@@ -5,15 +5,15 @@
 // Login   <person_m@epitech.eu>
 //
 // Started on  Tue Apr 11 17:18:54 2017 Melvin Personnier
-// Last update Sun Apr 16 19:13:17 2017 Melvin Personnier
+// Last update Mon Apr 17 18:07:20 2017 Melvin Personnier
 //
 
 #include "Snake.hpp"
 
 Snake::Snake(int width, int height)
 {
-  if (width < 8 || height < 8)
-    throw MapToSmall("Map's width and height must be >= 7");
+  if (width != 27 || height != 31)
+    throw MapToSmall("Map's width must be == 27 and height must be == 31");
   int sizeOfStruct = sizeof(struct arcade::WhereAmI) +
 	      sizeof(arcade::Position) * width * height;
   _map = new Map(width, height);
@@ -338,5 +338,5 @@ int Snake::getScore() const
 
 ILogic *cln::clone()
 {
-  return new Snake(MAP_W, MAP_H);
+  return new Snake(27, 31);
 }
